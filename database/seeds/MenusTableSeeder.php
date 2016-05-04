@@ -21,6 +21,16 @@ class MenusTableSeeder extends Seeder
         $index->description = "后台首页";
         $index->save();
 
+        $blog = new Menu;
+        $blog->name = "博客管理";
+        $blog->pid = 0;
+        $blog->language = "zh";
+        $blog->icon = "fa fa-diamond";
+        $blog->slug = "admin.systems.blog";
+        $blog->url = "admin/cate*,admin/article*,admin/tag*";
+        $blog->description = "后台首页";
+        $blog->save();
+
         $system = new Menu;
         $system->name = "系统管理";
         $system->pid = 0;
@@ -82,6 +92,8 @@ class MenusTableSeeder extends Seeder
         $menu->url = "admin/menu";
         $menu->description = "显示菜单管理";
         $menu->save();
+
+        
 
     }
 }

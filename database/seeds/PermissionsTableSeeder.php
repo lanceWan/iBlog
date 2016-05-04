@@ -312,5 +312,58 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'admin.users.reset',
             'description' => '修改用户密码'
         ]);
+
+
+        /**
+         * 博客权限
+         */
+        
+
+        /**
+         * 博客管理权限
+         */
+        Permission::create([
+            'name' => 'Show blog manage',
+            'slug' => 'admin.systems.blog',
+            'description' => '显示分类列表'
+        ]);
+
+        /**
+         * 显示分类列表
+         */
+        Permission::create([
+            'name' => 'Show categories list',
+            'slug' => 'admin.categories.list',
+            'description' => '显示分类列表'
+        ]);
+
+        /**
+         * 创建分类
+         */
+        Permission::create([
+            'name' => 'categories create',
+            'slug' => 'admin.categories.create',
+            'description' => '创建分类'
+        ]);
+
+        /**
+         * 删除分类
+         */
+        Permission::create([
+            'name' => 'categories delete',
+            'slug' => 'admin.categories.delete',
+            'description' => '删除分类'
+        ]);
+
+        /**
+         * 修改分类
+         */
+        Permission::create([
+            'name' => 'categories edit',
+            'slug' => 'admin.categories.edit',
+            'description' => '修改分类'
+        ]);
+
+
     }
 }

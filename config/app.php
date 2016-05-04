@@ -224,6 +224,7 @@ return [
         'PermissionRepository' => App\Facades\PermissionFacade::class,
         'RoleRepository' => App\Facades\RoleFacade::class,
         'MenuRepository' => App\Facades\MenuFacade::class,
+        'CategoryRepository' => App\Facades\CategoryFacade::class,
 
     ],
 
