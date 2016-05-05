@@ -325,7 +325,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name' => 'Show blog manage',
             'slug' => 'admin.systems.blog',
-            'description' => '显示分类列表'
+            'description' => '博客管理'
         ]);
 
         /**
@@ -362,6 +362,151 @@ class PermissionsTableSeeder extends Seeder
             'name' => 'categories edit',
             'slug' => 'admin.categories.edit',
             'description' => '修改分类'
+        ]);
+
+
+        /**
+         * 显示文章列表
+         */
+        Permission::create([
+            'name' => 'Show articles list',
+            'slug' => 'admin.articles.list',
+            'description' => '显示文章列表'
+        ]);
+
+        /**
+         * 创建文章
+         */
+        Permission::create([
+            'name' => 'articles create',
+            'slug' => 'admin.articles.create',
+            'description' => '创建文章'
+        ]);
+
+        /**
+         * 删除文章
+         */
+        Permission::create([
+            'name' => 'articles delete',
+            'slug' => 'admin.articles.delete',
+            'description' => '删除文章'
+        ]);
+
+        /**
+         * 修改文章
+         */
+        Permission::create([
+            'name' => 'articles edit',
+            'slug' => 'admin.articles.edit',
+            'description' => '修改文章'
+        ]);
+
+        /**
+         * 通过文章
+         */
+        Permission::create([
+            'name' => 'articles audit',
+            'slug' => 'admin.articles.audit',
+            'description' => '通过文章'
+        ]);
+
+        /**
+         * 禁用文章
+         */
+        Permission::create([
+            'name' => 'articles trash',
+            'slug' => 'admin.articles.trash',
+            'description' => '禁用文章'
+        ]);
+
+        /**
+         * 恢复文章
+         */
+        Permission::create([
+            'name' => 'articles undo',
+            'slug' => 'admin.articles.undo',
+            'description' => '恢复文章'
+        ]);
+
+        /**
+         * 查看文章信息
+         */
+        Permission::create([
+            'name' => 'articles show',
+            'slug' => 'admin.articles.show',
+            'description' => '查看文章信息'
+        ]);
+
+        /**
+         * 显示标签列表
+         */
+        Permission::create([
+            'name' => 'Show tags list',
+            'slug' => 'admin.tags.list',
+            'description' => '显示标签列表'
+        ]);
+
+        /**
+         * 创建标签
+         */
+        Permission::create([
+            'name' => 'tags create',
+            'slug' => 'admin.tags.create',
+            'description' => '创建标签'
+        ]);
+
+        /**
+         * 删除标签
+         */
+        Permission::create([
+            'name' => 'tags delete',
+            'slug' => 'admin.tags.delete',
+            'description' => '删除标签'
+        ]);
+
+        /**
+         * 修改标签
+         */
+        Permission::create([
+            'name' => 'tags edit',
+            'slug' => 'admin.tags.edit',
+            'description' => '修改标签'
+        ]);
+
+        /**
+         * 通过标签
+         */
+        Permission::create([
+            'name' => 'tags audit',
+            'slug' => 'admin.tags.audit',
+            'description' => '通过标签'
+        ]);
+
+        /**
+         * 禁用标签
+         */
+        Permission::create([
+            'name' => 'tags trash',
+            'slug' => 'admin.tags.trash',
+            'description' => '禁用标签'
+        ]);
+
+        /**
+         * 恢复标签
+         */
+        Permission::create([
+            'name' => 'tags undo',
+            'slug' => 'admin.tags.undo',
+            'description' => '恢复标签'
+        ]);
+
+        /**
+         * 查看标签信息
+         */
+        Permission::create([
+            'name' => 'tags show',
+            'slug' => 'admin.tags.show',
+            'description' => '查看标签信息'
         ]);
 
 

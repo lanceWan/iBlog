@@ -40,6 +40,16 @@ return [
         'deleted_success'   => '彻底删除菜单成功.',
         'deleted_error'     => '彻底删除菜单失败.',
     ],
+    'categories' => [
+        'laod_success'      => '加载分类属性成功.',
+        'updated_success'   => '修改分类成功.',
+        'updated_error'     => '修改分类失败.',
+        'created_success'   => '创建分类成功.',
+        'created_error'     => '创建分类失败.',
+        'currentItem_error' => '创建分类失败.',
+        'deleted_success'   => '彻底删除分类成功.',
+        'deleted_error'     => '彻底删除分类失败.',
+    ],
     'deleteTitle' => '确定要彻底删除么?',
 
 ];

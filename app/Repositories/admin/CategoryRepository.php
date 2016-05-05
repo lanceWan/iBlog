@@ -6,7 +6,7 @@ use Flash;
 class CategoryRepository
 {
 	/**
-	 * 获取菜单数据
+	 * 获取分类数据
 	 * @author 晚黎
 	 * @date   2016-04-20T17:10:54+0800
 	 * @return [type]                   [description]
@@ -14,46 +14,46 @@ class CategoryRepository
 	public function index()
 	{
 		//判断是否缓存menu数据
-		if (Cache::has('menuList')) {
-			return Cache::get('menuList');
+		if (Cache::has('cateList')) {
+			return Cache::get('cateList');
 		}
-		$menuList = $this->setMenuListCache();
-		return $menuList;
+		$cateList = $this->setcateListCache();
+		return $cateList;
 	}
 	/**
-	 * 递归迭代菜单关系
+	 * 递归迭代分类关系
+	 * @date   2016-05-05
 	 * @author 晚黎
-	 * @date   2016-04-20T10:36:20+0800
-	 * @param  [type]                   $menus [description]
-	 * @param  integer                  $pid   [description]
-	 * @return [type]                          [description]
+	 * @param  [type]     $categories [description]
+	 * @param  integer    $pid        [description]
+	 * @return [type]                 [description]
 	 */
-	private function sortMenu($menus,$pid = 0){
+	private function sortCategory($categories,$pid = 0){
 		$arr = [];
-		foreach($menus as $k =>  $v){
+		foreach($categories as $k =>  $v){
 			if($v['pid'] == $pid){
 	            $arr[$k] = $v;
-	            $arr[$k]['child'] = self::sortMenu($menus,$v['id']);
+	            $arr[$k]['child'] = self::sortCategory($categories,$v['id']);
 	        }
 	    }
 		return $arr;
 	}
 	/**
-	 * 缓存菜单数据
+	 * 缓存分类数据
+	 * @date   2016-05-05
 	 * @author 晚黎
-	 * @date   2016-04-20T13:10:53+0800
 	 */
-	public function setMenuListCache()
+	public function setCateListCache()
 	{
-		$menus = Menu::where('language',config('app.locale'))
+		$categories = Category::where('status',config('admin.global.status.active'))
 						->orderBy('sort','desc')
 						->orderBy('id','asc')
 						->get()
 						->toArray();
-		if ($menus) {
-			$menuList = $this->sortMenu($menus);
-			//子菜单进行排序
-			foreach ($menuList as &$v) {
+		if ($categories) {
+			$cateList = $this->sortCategory($categories);
+			//子分类进行排序
+			foreach ($cateList as &$v) {
 	    		if ($v['child']) {
 	    			$sort = array_column($v['child'],'sort');
 	    			arsort($sort);
@@ -61,75 +61,75 @@ class CategoryRepository
 	    		}
 	    	}
 			//缓存数据
-			Cache::forever('menuList', $menuList);
-			return $menuList;
+			Cache::forever('cateList', $cateList);
+			return $cateList;
 		}
 		return [];
 	}
 	/**
-	 * 获取菜单数据
+	 * 获取分类数据
+	 * @date   2016-05-05
 	 * @author 晚黎
-	 * @date   2016-04-20T10:37:38+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
+	 * @param  [type]     $id [description]
+	 * @return [type]         [description]
 	 */
 	public function edit($id)
 	{
-		$menu = Menu::find($id)->toArray();
-		if ($menu) {
-			$menu['update'] = url('admin/menu/'.$id);
-    		$menu['msg'] = trans('alerts.menus.laod_success');
-			return $menu;
+		$cate = Category::find($id)->toArray();
+		if ($cate) {
+			$cate['update'] = url('admin/cate/'.$id);
+    		$cate['msg'] = trans('alerts.categories.laod_success');
+			return $cate;
 		}
 		abort(404);
 	}
 	/**
-	 * 修改菜单数据
+	 * 修改分类数据
+	 * @date   2016-05-05
 	 * @author 晚黎
-	 * @date   2016-04-20T14:05:54+0800
-	 * @param  [type]                   $request [description]
-	 * @param  [type]                   $id      [description]
-	 * @return [type]                            [description]
+	 * @param  [type]     $request [description]
+	 * @param  [type]     $id      [description]
+	 * @return [type]              [description]
 	 */
 	public function update($request,$id)
 	{
-		$menu = Menu::find($id);
-		if ($menu) {
-			$pid = $menu->pid;
-			$sort = $menu->sort;
-			$isUpdate = $menu->fill($request->all())->save();
+		$category = Category::find($id);
+		if ($category) {
+			$pid = $category->pid;
+			$sort = $category->sort;
+			$isUpdate = $category->fill($request->all())->save();
 			if ($isUpdate) {
-				$this->setMenuListCache();
-				Flash::success(trans('alerts.menus.updated_success'));
+				$this->setCateListCache();
+				Flash::success(trans('alerts.categories.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.menus.updated_error'));
+			Flash::error(trans('alerts.categories.updated_error'));
 			return false;
 		}
 		abort(404);
 	}
 	/**
-	 * 添加菜单
+	 * 添加分类
+	 * @date   2016-05-05
 	 * @author 晚黎
-	 * @date   2016-04-20T14:32:54+0800
-	 * @param  [type]                   $request [description]
-	 * @return [type]                            [description]
+	 * @param  [type]     $request [description]
+	 * @return [type]              [description]
 	 */
 	public function store($request)
 	{
-		$menu = new Menu;
-		if ($menu->fill($request->all())->save()) {
-			// 菜单发生变化，更新菜单数组
-			$this->setMenuListCache();
-			Flash::success(trans('alerts.menus.created_success'));
+		$categories = new Category;
+		if ($categories->fill($request->all())->save()) {
+			// 分类发生变化，更新分类数组
+			$this->setCateListCache();
+			Flash::success(trans('alerts.categories.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.menus.created_error'));
+		Flash::error(trans('alerts.categories.created_error'));
 		return false;
 	}
 
 	/**
-	 * 菜单排序
+	 * 分类排序
 	 * @author 晚黎
 	 * @date   2016-04-20T15:43:19+0800
 	 * @return [type]                   [description]
@@ -140,37 +140,37 @@ class CategoryRepository
 		$itemParentId = request('itemParentId',0);
 
 		if (!$currentItemId) {
-			return ['status' => false,'msg' => trans('alerts.menus.currentItem_error')];
+			return ['status' => false,'msg' => trans('alerts.categories.currentItem_error')];
 		}
-		$menu = Menu::find($currentItemId);
-		if ($menu) {
-			$menu->pid = $itemParentId;
-			if ($menu->save()) {
-				//更新菜单缓存数据
-				$this->setMenuListCache();
-				return ['status' => true,'msg' => trans('alerts.menus.updated_success')];
+		$category = Category::find($currentItemId);
+		if ($category) {
+			$category->pid = $itemParentId;
+			if ($category->save()) {
+				//更新分类缓存数据
+				$this->setCateListCache();
+				return ['status' => true,'msg' => trans('alerts.categories.updated_success')];
 			}
-			return ['status' => false,'msg' => trans('alerts.menus.updated_error')];
+			return ['status' => false,'msg' => trans('alerts.categories.updated_error')];
 		}
 		abort(404);
 	}
 	/**
-	 * 删除菜单
+	 * 删除分类
+	 * @date   2016-05-05
 	 * @author 晚黎
-	 * @date   2016-04-20T16:52:27+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
+	 * @param  [type]     $id [description]
+	 * @return [type]         [description]
 	 */
 	public function destroy($id)
 	{
-		$isDestroy = Menu::destroy($id);
+		$isDestroy = Category::destroy($id);
 		if ($isDestroy) {
 			//更新缓存数据
-			$this->setMenuListCache();
-			Flash::success(trans('alerts.menus.deleted_success'));
+			$this->setCateListCache();
+			Flash::success(trans('alerts.categories.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.menus.deleted_error'));
+		Flash::error(trans('alerts.categories.deleted_error'));
 		return false;
 	}
 }

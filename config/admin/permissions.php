@@ -35,4 +35,10 @@ return[
 		'edit' 		=> 'admin.menus.edit',
 		'destory' 	=> 'admin.menus.delete',
 	],
+
+	'category' => [
+		'create' 	=> 'admin.categories.create',
+		'edit' 		=> 'admin.categories.edit',
+		'destory' 	=> 'admin.categories.delete',
+	],
 ];

@@ -4,6 +4,7 @@ return [
 	'id' => 'ID',
 	'close' => '关闭',
 	'menuLevel' => '顶级菜单',
+	'cateLevel' => '顶级分类',
 	'logout' => '退出',
 	'user' => [
 		'id' => '序号',
@@ -66,6 +67,16 @@ return [
 		'detail' => '<i class="fa fa-cog"></i> 菜单属性',
 		'show' => '查看',
 	],
+	'cate' => [
+		'id' => 'ID',
+		'name' => '名称',
+		'pid' => '一级菜单',
+		'sort' => '排序',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'detail' => '<i class="fa fa-cog"></i> 菜单属性',
+	],
 	'breadcrumb' => [
 		'home' => '<i class="fa fa-home"></i> 主页',
 		'permissionList' => '<i class="fa fa-bars"></i> 权限列表',
@@ -83,5 +94,6 @@ return [
 		'logList' => '<i class="fa fa-cogs"></i> 系统日志',
 		'logs' => '<i class="fa fa-navicon"></i> 日志列表',
 		'logDetail' => '<i class="fa fa-television"></i> 日志详情',
+		'cateList' => '<i class="fa fa-cloud"></i> 分类管理',
 	]
 ];
