@@ -14,8 +14,10 @@ class CreateArticleTagTable extends Migration
     {
         Schema::create('article_tag', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('article_id')->default(0)->comment('文章ID');
-            $table->integer('tag_id')->default(0)->comment('标签ID');
+            $table->integer('article_id')->unsigned()->index()->comment('文章ID');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->integer('tag_id')->unsigned()->index()->comment('标签ID');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->timestamps();
         });
     }

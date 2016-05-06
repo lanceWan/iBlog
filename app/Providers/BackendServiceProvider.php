@@ -42,5 +42,11 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('CategoryRepository', function($app){
             return new \App\Repositories\admin\CategoryRepository();
         });
+        $this->app->singleton('TagRepository', function($app){
+            return new \App\Repositories\admin\TagRepository();
+        });
+        $this->app->singleton('ArticleRepository', function($app){
+            return new \App\Repositories\admin\ArticleRepository();
+        });
     }
 }

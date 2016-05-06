@@ -33,7 +33,7 @@ class MenusTableSeeder extends Seeder
         $blog->language = "zh";
         $blog->icon = "fa fa-diamond";
         $blog->slug = "admin.systems.blog";
-        $blog->url = "admin/cate*,admin/articles*,admin/tag*";
+        $blog->url = "admin/cate*,admin/article*,admin/tag*";
         $blog->description = "博客管理";
         $blog->save();
 

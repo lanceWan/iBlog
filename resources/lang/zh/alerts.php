@@ -50,6 +50,14 @@ return [
         'deleted_success'   => '彻底删除分类成功.',
         'deleted_error'     => '彻底删除分类失败.',
     ],
+    'tags' => [
+        'created_success'   => '创建标签成功.',
+        'created_error'     => '创建标签失败.',
+        'updated_success'   => '修改标签成功.',
+        'updated_error'     => '修改标签失败.',
+        'deleted_success'   => '彻底删除标签成功.',
+        'deleted_error'     => '彻底删除标签失败.',
+    ],
     'deleteTitle' => '确定要彻底删除么?',
 
 ];

@@ -51,5 +51,23 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'user',
+	],
+	////////
+	//标签//
+	////////
+	'tag' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		// trait 中的 action 参数
+		'action' => 'tag',
+	],
+	////////
+	//文章//
+	////////
+	'article' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'article',
 	]
 ];

@@ -473,42 +473,6 @@ class PermissionsTableSeeder extends Seeder
             'description' => '修改标签'
         ]);
 
-        /**
-         * 通过标签
-         */
-        Permission::create([
-            'name' => 'tags audit',
-            'slug' => 'admin.tags.audit',
-            'description' => '通过标签'
-        ]);
-
-        /**
-         * 禁用标签
-         */
-        Permission::create([
-            'name' => 'tags trash',
-            'slug' => 'admin.tags.trash',
-            'description' => '禁用标签'
-        ]);
-
-        /**
-         * 恢复标签
-         */
-        Permission::create([
-            'name' => 'tags undo',
-            'slug' => 'admin.tags.undo',
-            'description' => '恢复标签'
-        ]);
-
-        /**
-         * 查看标签信息
-         */
-        Permission::create([
-            'name' => 'tags show',
-            'slug' => 'admin.tags.show',
-            'description' => '查看标签信息'
-        ]);
-
 
     }
 }

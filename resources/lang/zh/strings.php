@@ -27,4 +27,9 @@ return [
 		'active' => ['fa fa-navicon','正常'],
 		'trash' => ['fa fa-trash','回收站'],
 	],
+	'article' => [
+		'audit' => ['fa fa-paw','待审核'],
+		'active' => ['fa fa-navicon','正常'],
+		'trash' => ['fa fa-trash','回收站'],
+	],
 ];

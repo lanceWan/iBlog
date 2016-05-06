@@ -41,4 +41,20 @@ return[
 		'edit' 		=> 'admin.categories.edit',
 		'destory' 	=> 'admin.categories.delete',
 	],
+	'tag' => [
+		'create' 	=> 'admin.tags.create',
+		'edit' 		=> 'admin.tags.edit',
+		'destory' 	=> 'admin.tags.delete',
+		'list' 		=> 'admin.tags.list',
+	],
+	'article' => [
+		'create' 	=> 'admin.articles.create',
+		'edit' 		=> 'admin.articles.edit',
+		'destory' 	=> 'admin.articles.delete',
+		'trash' 	=> 'admin.articles.trash',
+		'undo' 		=> 'admin.articles.undo',
+		'list' 		=> 'admin.articles.list',
+		'audit'		=> 'admin.articles.audit',
+		'show'		=> 'admin.articles.show',
+	],
 ];
