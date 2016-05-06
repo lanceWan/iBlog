@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
 use ArticleRepository;
+use TagRepository;
 
 class ArticleController extends Controller
 {
@@ -26,18 +28,20 @@ class ArticleController extends Controller
      */
     public function create()
     {
-    	return view('admin.article.create');
+        $tags = TagRepository::findAllTag();
+    	return view('admin.article.create')->with(compact('tags'));
     }
 
     /**
-     * 添加权限
+     * 添加文章
+     * @date   2016-05-06
      * @author 晚黎
-     * @date   2016-04-12T13:20:45+0800
-     * @param  PermissionRequest        $request [description]
-     * @return [type]                            [description]
+     * @param  ArticleRequest $request [description]
+     * @return [type]                     [description]
      */
-    public function store(PermissionRequest $request)
+    public function store(ArticleRequest $request)
     {
+        // dd($request->all());
     	ArticleRepository::store($request);
     	return redirect('admin/article');
     }
@@ -58,11 +62,11 @@ class ArticleController extends Controller
      * 修改权限
      * @author 晚黎
      * @date   2016-04-12T17:51:35+0800
-     * @param  PermissionRequest        $request [description]
+     * @param  ArticleRequest        $request [description]
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(PermissionRequest $request,$id)
+    public function update(ArticleRequest $request,$id)
     {
     	ArticleRepository::update($request,$id);
     	return redirect('admin/article');

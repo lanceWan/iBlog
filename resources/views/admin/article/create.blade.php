@@ -1,4 +1,10 @@
 @extends('layouts.admin')
+@section('css')
+<link href="{{asset('backend/plugins/bootstrap-fileinput/bootstrap-fileinput.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('backend/plugins/editor/css/editormd.min.css')}}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+<link href="{{asset('backend/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
 <div class="page-bar">
 	<ul class="page-breadcrumb">
@@ -37,7 +43,7 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/article')}}">
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/article')}}" enctype="multipart/form-data">
               		{!! csrf_field() !!}
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
@@ -49,19 +55,62 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="intro">{{trans('labels.article.intro')}}</label>
+                          <label class="col-md-2 control-label" for="img">{{trans('labels.article.img')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.article.intro')}}" value="{{old('intro')}}">
-                              <div class="form-control-focus"> </div>
+                              <div class="fileinput fileinput-new" data-provides="fileinput">
+                                  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                      <img src="{{asset('backend/img/no-image.png')}}" alt="" /> </div>
+                                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                  <div>
+                                      <span class="btn purple btn-file">
+                                          <span class="fileinput-new"> Select image </span>
+                                          <span class="fileinput-exists"> Change </span>
+                                          <input type="file" name="img"> </span>
+                                      <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                  </div>
+                              </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="description">{{trans('labels.article.description')}}</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="description" placeholder="{{trans('labels.article.description')}}" value="{{old('description')}}">
-                              <div class="form-control-focus"> </div>
+                          <div class="col-md-12">
+                              <div id="editor"></div>
                           </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-2 control-label" for="intro">{{trans('labels.article.intro')}}</label>
+                          <div class="col-md-8">
+                              <div class="input-group">
+                                  <div class="input-group-control">
+                                      <input type="text" name="intro_number" id="intro" class="form-control" placeholder="{{trans('labels.article.intro_number')}}">
+                                      <div class="form-control-focus"> </div>
+                                  </div>
+                                  <span class="input-group-btn btn-right">
+                                      <a class="btn green-haze">{{trans('labels.article.preview')}}!</a>
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" for="intro">{{trans('labels.article.tag')}}</label>
+                        <div class="col-md-8">
+                          <select class="bs-select form-control form-filter" data-show-subtext="true" name="tag[]" multiple="true">
+                              @if($tags)
+                                @foreach($tags as $v)
+                                  <option value="{{$v->id}}"> {{$v->name}}</option>
+                                @endforeach
+                              @endif
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" for="new_tag">{{trans('labels.article.tagCreate')}}</label>
+                        <div class="col-md-8">
+                          <input type="text" name="new_tag" id="new_tag" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput">
+                        </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
@@ -106,4 +155,29 @@
       </div>
   </div>
 </div>
+@endsection
+@section('js')
+<script src="{{asset('backend/plugins/bootstrap-fileinput/bootstrap-fileinput.js')}}" type="text/javascript"></script>
+<script src="{{asset('backend/plugins/editor/js/editormd.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('backend/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}" type="text/javascript"></script>
+<script>
+  $(function() {
+    var editor = editormd('editor',{
+      width   : "100%",
+      height  : 640,
+      syncScrolling : "single",
+      toolbarAutoFixed: false,
+      gotoLine:false,
+      emoji:true,
+      saveHTMLToTextarea:true,
+      path    : "{{asset('backend/plugins/editor/lib')}}/"
+    });
+
+    $(".bs-select").selectpicker({
+      iconBase: "fa",
+      tickIcon: "fa-check"
+    });
+  });
+</script>
 @endsection

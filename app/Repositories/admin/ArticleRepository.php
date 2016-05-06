@@ -1,9 +1,9 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Permission;
 use App\Models\Article;
 use Carbon\Carbon;
 use Flash;
+use zgldh\QiniuStorage\QiniuStorage;
 /**
 * 文章仓库
 */
@@ -101,20 +101,35 @@ class ArticleRepository
 
 	/**
 	 * 添加文章
+	 * @date   2016-05-06
 	 * @author 晚黎
-	 * @date   2016-04-12T14:46:02+0800
-	 * @param  [type]                   $request [description]
-	 * @return [type]                            [description]
+	 * @param  [type]     $request [description]
+	 * @return [type]              [description]
 	 */
 	public function store($request)
 	{
-		$permission = new Permission;
-		if ($permission->fill($request->all())->save()) {
-			Flash::success(trans('alerts.permissions.created_success'));
-			return true;
+		// $permission = new Article;
+		// $data = $request->all();
+		//是否上传了文章封面
+		if ($request->hasFile('img')) {
+			// echo "123444";exit();
+			$disk = QiniuStorage::disk('qiniu');
+			$file = $request->file('img');
+
+			dd($file);
+			$bool = $disk->put($file->getClientOriginalName(),'ivv');
+			dd($bool);
 		}
-		Flash::error(trans('alerts.permissions.created_error'));
-		return false;
+		echo "没有文件";exit();
+		// $data['content_html'] = $request->editor-html-code;
+		// $data['content_mark'] = $request->editor-markdown-doc;
+		// $data['intro'] = '';
+		// if ($permission->fill($request->all())->save()) {
+		// 	Flash::success(trans('alerts.permissions.created_success'));
+		// 	return true;
+		// }
+		// Flash::error(trans('alerts.permissions.created_error'));
+		// return false;
 	}
 	/**
 	 * 修改视图

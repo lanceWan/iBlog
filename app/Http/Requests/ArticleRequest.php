@@ -13,7 +13,7 @@ class ArticleRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,31 @@ class ArticleRequest extends Request
     public function rules()
     {
         return [
-            //
+            'id' => 'numeric',
+            'title' => 'required|unique:permissions,slug,'.$this->id,
+            'editor-markdown-doc' => 'required',
+            'intro_number' => 'required|numeric',
+            'status' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required'  => trans('validation.required'),
+            'unique'    => trans('validation.unique'),
+            'numeric'   => trans('validation.numeric'),
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'id'            => trans('labels.id'),
+            'title'          => trans('labels.article.title'),
+            'editor-markdown-doc' => trans('labels.article.content'),
+            'intro_number'   => trans('labels.article.intro_number'),
+            'status'        => trans('labels.article.status'),     
         ];
     }
 }

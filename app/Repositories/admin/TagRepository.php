@@ -157,4 +157,15 @@ class TagRepository
 		Flash::error(trans('alerts.tags.deleted_error'));
 		return false;
 	}
+
+	/**
+	 * 查出所有的标签
+	 * @date   2016-05-06
+	 * @author 晚黎
+	 * @return [type]     [description]
+	 */
+	public function findAllTag()
+	{
+		return Tag::all();
+	}
 }
