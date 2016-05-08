@@ -12,7 +12,7 @@ return[
 	 * destory 	彻底删除
 	 */
 	'status' => [
-		'audit' => 0,
+		'audit' => 3,
 		'active' => 1,
 		'ban' => 2,
 		'trash' => 99,
@@ -69,5 +69,7 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'article',
-	]
+	],
+	// 七牛图片上传路径
+	'imagePath' => 'iwanli/image/',
 ];

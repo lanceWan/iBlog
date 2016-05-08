@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Article;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Flash;
 use zgldh\QiniuStorage\QiniuStorage;
@@ -24,7 +25,6 @@ class ArticleRepository
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 		
 		$title = request('title' ,'');
-		$intro = request('intro' ,'');
 		$status = request('status' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
@@ -42,16 +42,6 @@ class ArticleRepository
 				$article = $article->where('title', $title);
 			}
 		}
-
-		/*文章搜索*/
-		if($intro){
-			if($search_pattern){
-				$article = $article->where('intro', 'like', $intro);
-			}else{
-				$article = $article->where('intro', $intro);
-			}
-		}
-		
 		/*状态搜索*/
 		if ($status) {
 			$article = $article->where('status', $status);
@@ -108,28 +98,36 @@ class ArticleRepository
 	 */
 	public function store($request)
 	{
-		// $permission = new Article;
-		// $data = $request->all();
+		$article = new Article;
+		$data = $request->all();
 		//是否上传了文章封面
 		if ($request->hasFile('img')) {
-			// echo "123444";exit();
-			$disk = QiniuStorage::disk('qiniu');
-			$file = $request->file('img');
-
-			dd($file);
-			$bool = $disk->put($file->getClientOriginalName(),'ivv');
-			dd($bool);
+			$data['img'] = $this->uploadImage($request->file('img'));
 		}
-		echo "没有文件";exit();
-		// $data['content_html'] = $request->editor-html-code;
-		// $data['content_mark'] = $request->editor-markdown-doc;
-		// $data['intro'] = '';
-		// if ($permission->fill($request->all())->save()) {
-		// 	Flash::success(trans('alerts.permissions.created_success'));
-		// 	return true;
-		// }
-		// Flash::error(trans('alerts.permissions.created_error'));
-		// return false;
+		$data['content_html'] = $data['editor-html-code'];
+		$data['content_mark'] = $data['editor-markdown-doc'];
+		if ($article->fill($data)->save()) {
+			//新增标签
+			if ($data['new_tag']) {
+				$tags = explode(',', $data['new_tag']);
+				$ids = [];
+				foreach ($tags as $v) {
+					$tag = Tag::firstOrCreate([
+						'name' => $v
+						]);
+					$ids[] = $tag->id;
+				}
+				$article->tag()->sync($ids);
+			}
+			//已选择标签
+			if (isset($data['tag']) && !empty($data['tag'])) {
+				$article->tag()->sync($data['tag']);
+			}
+			Flash::success(trans('alerts.articles.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.articles.created_error'));
+		return false;
 	}
 	/**
 	 * 修改视图
@@ -140,9 +138,13 @@ class ArticleRepository
 	 */
 	public function edit($id)
 	{
-		$permission = Permission::find($id);
-		if ($permission) {
-			return $permission;
+		$article = Article::with('tag')->find($id);
+		if ($article) {
+			if ($article->tag) {
+				$tagIds = array_column($article->tag->toArray(), 'id');
+				$article->tag = $tagIds;
+			}
+			return $article;
 		}
 		abort(404);
 	}
@@ -155,13 +157,13 @@ class ArticleRepository
 	 */
 	public function update($request,$id)
 	{
-		$permission = Permission::find($id);
-		if ($permission) {
-			if ($permission->fill($request->all())->save()) {
-				Flash::success(trans('alerts.permissions.updated_success'));
+		$article = Article::find($id);
+		if ($article) {
+			if ($article->fill($request->all())->save()) {
+				Flash::success(trans('alerts.articles.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.permissions.updated_error'));
+			Flash::error(trans('alerts.articles.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -177,14 +179,14 @@ class ArticleRepository
 	 */
 	public function mark($id,$status)
 	{
-		$permission = Permission::find($id);
-		if ($permission) {
-			$permission->status = $status;
-			if ($permission->save()) {
-				Flash::success(trans('alerts.permissions.updated_success'));
+		$article = Article::find($id);
+		if ($article) {
+			$article->status = $status;
+			if ($article->save()) {
+				Flash::success(trans('alerts.articles.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.permissions.updated_error'));
+			Flash::error(trans('alerts.articles.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -192,30 +194,31 @@ class ArticleRepository
 
 	public function destroy($id)
 	{
-		$isDelete = Permission::destroy($id);
+		$isDelete = Article::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.permissions.deleted_success'));
+			Flash::success(trans('alerts.articles.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.permissions.deleted_error'));
+		Flash::error(trans('alerts.articles.deleted_error'));
 		return false;
 	}
 
 	/**
-	 * 获取所有文章并分组
+	 * 上传图片到七牛
 	 * @author 晚黎
-	 * @date   2016-04-13T13:30:34+0800
-	 * @return [type]                   [description]
+	 * @date   2016-05-07T11:05:27+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
 	 */
-	public function findPermissionWithArray()
+	private function uploadImage($file)
 	{
-		$permission = Permission::where('status',config('admin.global.status.active'))->get();
-		$array = [];
-		if ($permission) {
-			foreach ($permission as $v) {
-				array_set($array, $v->slug, ['id' => $v->id,'name' => $v->name,'desc' => $v->description,'key' => str_random(10)]);
-			}
+		$disk = QiniuStorage::disk('qiniu');
+		$fileName = md5($file->getClientOriginalName().time().rand()).'.'.$file->getClientOriginalExtension();
+		$bool = $disk->put(config('admin.global.imagePath').$fileName,file_get_contents($file->getRealPath()));
+		if ($bool) {
+			$path = $disk->downloadUrl(config('admin.global.imagePath').$fileName);
+			return $path;
 		}
-		return $array;
+		return '';
 	}
 }

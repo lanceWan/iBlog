@@ -17,7 +17,7 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <span>{!! trans('labels.breadcrumb.articleCreate') !!}</span>
+	        <span>{!! trans('labels.breadcrumb.articleEdit') !!}</span>
 	    </li>
 	</ul>
 </div>
@@ -28,7 +28,7 @@
           <div class="portlet-title">
               <div class="caption font-green-haze">
                   <i class="icon-settings font-green-haze"></i>
-                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.articleCreate') !!}</span>
+                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.articleEdit') !!}</span>
               </div>
               <div class="actions">
                   <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -43,13 +43,15 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/article')}}" enctype="multipart/form-data">
-              		{!! csrf_field() !!}
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/article/'.$article->id)}}" enctype="multipart/form-data">
+          		{!! csrf_field() !!}
+          		<input type="hidden" name="_method" value="PATCH">
+              	<input type="hidden" name="id" value="{{$article->id}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="name">{{trans('labels.article.title')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.article.title')}}" value="{{old('title')}}">
+                              <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.article.title')}}" value="{{$article->title}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -59,7 +61,7 @@
                           <div class="col-md-8">
                               <div class="fileinput fileinput-new" data-provides="fileinput">
                                   <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                      <img src="{{asset('backend/img/no-image.png')}}" alt="" /> </div>
+                                      <img src="{{$article->img or asset('backend/img/no-image.png')}}" alt="" /> </div>
                                   <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                   <div>
                                       <span class="btn purple btn-file">
@@ -75,14 +77,14 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="intro">{{trans('labels.article.intro')}}</label>
                           <div class="col-md-8">
-                            <textarea class="form-control" name="intro" rows="5" placeholder="Enter more text">{{old('intro')}}</textarea>
+                            <textarea class="form-control" name="intro" rows="5" placeholder="Enter more text">{{$article->intro}}</textarea>
                             <div class="form-control-focus"></div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
                           <div class="col-md-12">
-                              <div id="editor"><textarea style="display: none;">{!!old('editor-markdown-doc')!!}</textarea></div>
+                              <div id="editor"><textarea style="display: none;">{!!$article->content_mark!!}</textarea></div>
                           </div>
                       </div>
 
@@ -92,7 +94,7 @@
                           <select class="bs-select form-control form-filter" data-show-subtext="true" name="tag[]" multiple="true">
                               @if($tags)
                                 @foreach($tags as $v)
-                                  <option value="{{$v->id}}">{{$v->name}}</option>
+                                  <option value="{{$v->id}}" @if(in_array($v->id, $article->tag)) selected @endif>{{$v->name}}</option>
                                 @endforeach
                               @endif
                           </select>
@@ -111,21 +113,21 @@
                         <div class="col-md-10">
                             <div class="md-radio-inline">
                                 <div class="md-radio">
-                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.active')) checked @endif>
+                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($article->status == config('admin.global.status.active')) checked @endif>
                                     <label for="status1">
                                         <span></span>
                                         <span class="check"></span>
                                         <span class="box"></span> {{trans('strings.article.active.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>
+                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($article->status === config('admin.global.status.audit')) checked @endif>
                                     <label for="status2">
                                         <span></span>
                                         <span class="check"></span>
                                         <span class="box"></span> {{trans('strings.article.audit.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
+                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($article->status == config('admin.global.status.trash')) checked @endif>
                                     <label for="status3">
                                         <span></span>
                                         <span class="check"></span>

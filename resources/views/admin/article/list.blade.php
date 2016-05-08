@@ -45,13 +45,11 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="15%"> {{ trans('labels.article.title') }} </th>
-                          <th width="15%"> {{ trans('labels.article.intro') }} </th>
-                          <th> {{ trans('labels.article.img') }} </th>
+                          <th> {{ trans('labels.article.title') }} </th>
                           <th> {{ trans('labels.article.status') }} </th>
-                          <th width="15%"> {{ trans('labels.article.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.article.updated_at') }} </th>
-                          <th> {{ trans('labels.action') }} </th>
+                          <th> {{ trans('labels.article.created_at') }} </th>
+                          <th> {{ trans('labels.article.updated_at') }} </th>
+                          <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
                             <td></td>
@@ -62,27 +60,6 @@
                                         <i class="fa fa-file-text"></i>
                                     </span>
                                     <input type="text" class="form-control form-filter" name="title" placeholder="{{ trans('labels.article.title') }}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                              </div>
-                            <td> 
-                              <div class="form-group form-md-line-input">
-                                <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                    <input type="text" class="form-control form-filter" name="intro" placeholder="{{ trans('labels.article.intro') }}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-group form-md-line-input">
-                                <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-cogs"></i>
-                                    </span>
-                                    <input type="text" class="form-control form-filter" name="img" placeholder="{{ trans('labels.article.img') }}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                               </div>

@@ -27,7 +27,7 @@ class ArticleRequest extends Request
             'id' => 'numeric',
             'title' => 'required|unique:permissions,slug,'.$this->id,
             'editor-markdown-doc' => 'required',
-            'intro_number' => 'required|numeric',
+            'intro' => 'required',
             'status' => 'required',
         ];
     }
@@ -47,7 +47,7 @@ class ArticleRequest extends Request
             'id'            => trans('labels.id'),
             'title'          => trans('labels.article.title'),
             'editor-markdown-doc' => trans('labels.article.content'),
-            'intro_number'   => trans('labels.article.intro_number'),
+            'intro'         => trans('labels.article.intro'),
             'status'        => trans('labels.article.status'),     
         ];
     }

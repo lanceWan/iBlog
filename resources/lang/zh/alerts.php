@@ -58,6 +58,14 @@ return [
         'deleted_success'   => '彻底删除标签成功.',
         'deleted_error'     => '彻底删除标签失败.',
     ],
+    'articles' => [
+        'created_success'   => '创建文章成功.',
+        'created_error'     => '创建文章失败.',
+        'updated_success'   => '修改文章成功.',
+        'updated_error'     => '修改文章失败.',
+        'deleted_success'   => '彻底删除文章成功.',
+        'deleted_error'     => '彻底删除文章失败.',
+    ],
     'deleteTitle' => '确定要彻底删除么?',
 
 ];

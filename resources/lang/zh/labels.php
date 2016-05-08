@@ -93,7 +93,6 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'show' => '查看',
-		'intro_number' => '简介字数',
 		'preview' => '预览',
 		'tag' => '标签',
 		'tagCreate' => '新增标签',

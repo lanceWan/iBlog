@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('img')->default('')->comment('文章封面');
             $table->text('content_html')->comment('文章内容-html格式');
             $table->text('content_mark')->comment('文章内容-markdown格式');
+            $table->tinyInteger('status')->default(0)->comment('状态');
             $table->timestamps();
         });
     }

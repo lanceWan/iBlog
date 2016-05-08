@@ -41,28 +41,28 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        // dd($request->all());
     	ArticleRepository::store($request);
     	return redirect('admin/article');
     }
 
     /**
-     * 修改权限视图
+     * 修改文章视图
      * @author 晚黎
-     * @date   2016-04-12T17:51:46+0800
+     * @date   2016-05-08T11:00:11+0800
      * @param  [type]                   $id [description]
      * @return [type]                       [description]
      */
     public function edit($id)
     {
-    	$permission = ArticleRepository::edit($id);
-    	return view('admin.article.edit')->with(compact('permission'));
+        $tags = TagRepository::findAllTag();
+    	$article = ArticleRepository::edit($id);
+    	return view('admin.article.edit')->with(compact(['article','tags']));
     }
     /**
-     * 修改权限
+     * 修改文章
      * @author 晚黎
-     * @date   2016-04-12T17:51:35+0800
-     * @param  ArticleRequest        $request [description]
+     * @date   2016-05-08T11:00:37+0800
+     * @param  ArticleRequest           $request [description]
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
@@ -73,9 +73,9 @@ class ArticleController extends Controller
     }
 
     /**
-     * 修改权限状态
+     * 修改文章状态
      * @author 晚黎
-     * @date   2016-04-13T09:35:06+0800
+     * @date   2016-05-08T11:00:53+0800
      * @param  [type]                   $id     [description]
      * @param  [type]                   $status [description]
      * @return [type]                           [description]
@@ -87,9 +87,9 @@ class ArticleController extends Controller
     }
 
     /**
-     * 删除权限
+     * 删除文章
      * @author 晚黎
-     * @date   2016-04-13T11:04:52+0800
+     * @date   2016-05-08T11:01:06+0800
      * @param  [type]                   $id [description]
      * @return [type]                       [description]
      */

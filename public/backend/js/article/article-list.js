@@ -9,8 +9,6 @@ var TableDatatablesAjax = function() {
         'url' : '/admin/article/ajaxIndex',
         "data": function ( d ) {
           d.title = $('.filter input[name="title"]').val();
-          d.intro = $('.filter input[name="intro"]').val();
-          d.img = $('.filter input[name="img"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
           d.created_at_from = $('.filter input[name="created_at_from"]').val();
           d.created_at_to = $('.filter input[name="created_at_to"]').val();
@@ -32,16 +30,6 @@ var TableDatatablesAjax = function() {
         	"name" : "title",
         	"orderable" : false,
         },
-        {
-        	"data": "intro",
-        	"name": "intro",
-        	"orderable" : false,
-        },
-        { 
-          "data": "img",
-          "name": "img",
-          "orderable" : true,
-        },
         { 
         	"data": "status",
         	"name": "status",
@@ -49,7 +37,7 @@ var TableDatatablesAjax = function() {
           render:function(data){
             if (data == 1) {
               return '<span class="label label-success"> 正常 </span>';
-            }else if(data == 0){
+            }else if(data == 3){
               return '<span class="label label-warning"> 待审核 </span>';
             }else{
               return '<span class="label label-danger"> 禁用 </span>';
@@ -108,6 +96,7 @@ var TableDatatablesAjax = function() {
       iconBase: "fa",
       tickIcon: "fa-check"
     });
+    
   };
 	return {
 		init : datatableAjax
