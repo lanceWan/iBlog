@@ -72,4 +72,6 @@ return[
 	],
 	// 七牛图片上传路径
 	'imagePath' => 'iwanli/image/',
+	//获取七牛上文件名称（去掉URL前多少位）
+	'deleteLength' => '38',
 ];

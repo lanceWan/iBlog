@@ -57,6 +57,24 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" for="intro">{{trans('labels.article.category_id')}}</label>
+                        <div class="col-md-8">
+                          <select class="bs-select1 form-control form-filter" data-live-search="true" data-show-subtext="true" name="category_id">
+                              @if($categories)
+                                @foreach($categories as $v)
+                                  <option value="{{$v['id']}}" @if($article->category_id == $v['id']) selected @endif>{{$v['name']}}</option>
+                                  @if($v['child'])
+                                  @foreach($v['child'] as $val)
+                                    <option value="{{$val['id']}}" @if($article->category_id == $val['id']) selected @endif>{{'|-- '.$val['name']}}</option>
+                                  @endforeach
+                                  @endif
+                                @endforeach
+                              @endif
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="img">{{trans('labels.article.img')}}</label>
                           <div class="col-md-8">
                               <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -170,6 +188,10 @@
     });
 
     $(".bs-select").selectpicker({
+      iconBase: "fa",
+      tickIcon: "fa-check"
+    });
+    $(".bs-select1").selectpicker({
       iconBase: "fa",
       tickIcon: "fa-check"
     });

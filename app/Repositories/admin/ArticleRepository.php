@@ -108,21 +108,21 @@ class ArticleRepository
 		$data['content_mark'] = $data['editor-markdown-doc'];
 		if ($article->fill($data)->save()) {
 			//新增标签
+			$ids = [];
 			if ($data['new_tag']) {
 				$tags = explode(',', $data['new_tag']);
-				$ids = [];
 				foreach ($tags as $v) {
 					$tag = Tag::firstOrCreate([
 						'name' => $v
 						]);
 					$ids[] = $tag->id;
 				}
-				$article->tag()->sync($ids);
 			}
 			//已选择标签
 			if (isset($data['tag']) && !empty($data['tag'])) {
-				$article->tag()->sync($data['tag']);
+				$ids = array_merge($ids,$data['tag']);
 			}
+			$article->tag()->sync($ids);
 			Flash::success(trans('alerts.articles.created_success'));
 			return true;
 		}
@@ -159,7 +159,35 @@ class ArticleRepository
 	{
 		$article = Article::find($id);
 		if ($article) {
-			if ($article->fill($request->all())->save()) {
+			$data = $request->all();
+			//是否上传了文章封面
+			if ($request->hasFile('img')) {
+				//判断之前是否有封面,有则删掉之前的封面
+				if ($article->img) {
+					$disk = QiniuStorage::disk('qiniu');
+					$disk->delete(substr($article->img, config('admin.global.deleteLength'))); 
+				}
+				$data['img'] = $this->uploadImage($request->file('img'));
+			}
+			$data['content_html'] = $data['editor-html-code'];
+			$data['content_mark'] = $data['editor-markdown-doc'];
+			if ($article->fill($data)->save()) {
+				//新增标签
+				$ids = [];
+				if ($data['new_tag']) {
+					$tags = explode(',', $data['new_tag']);
+					foreach ($tags as $v) {
+						$tag = Tag::firstOrCreate([
+							'name' => $v
+							]);
+						$ids[] = $tag->id;
+					}
+				}
+				//已选择标签
+				if (isset($data['tag']) && !empty($data['tag'])) {
+					$ids = array_merge($ids,$data['tag']);
+				}
+				$article->tag()->sync($ids);
 				Flash::success(trans('alerts.articles.updated_success'));
 				return true;
 			}

@@ -25,6 +25,7 @@ class ArticleRequest extends Request
     {
         return [
             'id' => 'numeric',
+            'category_id' => 'required|numeric',
             'title' => 'required|unique:permissions,slug,'.$this->id,
             'editor-markdown-doc' => 'required',
             'intro' => 'required',
@@ -45,6 +46,7 @@ class ArticleRequest extends Request
     {
         return [
             'id'            => trans('labels.id'),
+            'category_id'   => trans('labels.id'),
             'title'          => trans('labels.article.title'),
             'editor-markdown-doc' => trans('labels.article.content'),
             'intro'         => trans('labels.article.intro'),

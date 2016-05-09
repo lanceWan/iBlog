@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use ArticleRepository;
 use TagRepository;
+use CategoryRepository;
 
 class ArticleController extends Controller
 {
@@ -29,7 +30,8 @@ class ArticleController extends Controller
     public function create()
     {
         $tags = TagRepository::findAllTag();
-    	return view('admin.article.create')->with(compact('tags'));
+        $categories = CategoryRepository::index();
+    	return view('admin.article.create')->with(compact(['tags','categories']));
     }
 
     /**
@@ -56,7 +58,8 @@ class ArticleController extends Controller
     {
         $tags = TagRepository::findAllTag();
     	$article = ArticleRepository::edit($id);
-    	return view('admin.article.edit')->with(compact(['article','tags']));
+        $categories = CategoryRepository::index();
+    	return view('admin.article.edit')->with(compact(['article','tags','categories']));
     }
     /**
      * 修改文章

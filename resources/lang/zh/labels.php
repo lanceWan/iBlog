@@ -86,6 +86,7 @@ return [
 	],
 	'article' => [
 		'id' => 'ID',
+		'category_id' => '分类',
 		'title' => '标题',
 		'intro' => '简介',
 		'img' => '封面',
