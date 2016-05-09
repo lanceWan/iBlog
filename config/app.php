@@ -156,6 +156,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\BackendServiceProvider::class,
+        App\Providers\FrontServiceProvider::class,
         /**
          * Third Party Service Providers...
          */
@@ -226,6 +227,7 @@ return [
         'CategoryRepository' => App\Facades\CategoryFacade::class,
         'TagRepository' => App\Facades\TagFacade::class,
         'ArticleRepository' => App\Facades\ArticleFacade::class,
+        'FrontRepository' => App\Facades\FrontFacade::class,
 
     ],
 

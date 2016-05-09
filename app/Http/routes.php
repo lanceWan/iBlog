@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +26,13 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    Route::get('/home', 'HomeController@index');
+// Route::group(['middleware' => ['web']], function () {
+//     Route::get('/home', 'HomeController@index');
+// });
+Route::group(['namespace' => 'Front','middleware' => ['web']], function ($router) {
     Route::auth();
+    $router->get('/', 'HomeController@index');
+    $router->get('/i18n', 'IndexController@dataTableI18n');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => ['web', 'auth']], function ($router) {

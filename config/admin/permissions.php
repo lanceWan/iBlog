@@ -34,12 +34,14 @@ return[
 		'create' 	=> 'admin.menus.create',
 		'edit' 		=> 'admin.menus.edit',
 		'destory' 	=> 'admin.menus.delete',
+		'list' 		=> 'admin.menus.list',
 	],
 
 	'category' => [
 		'create' 	=> 'admin.categories.create',
 		'edit' 		=> 'admin.categories.edit',
 		'destory' 	=> 'admin.categories.delete',
+		'list' 		=> 'admin.categories.list',
 	],
 	'tag' => [
 		'create' 	=> 'admin.tags.create',

@@ -11,6 +11,16 @@ use CategoryRepository;
 
 class ArticleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkPermission:'.config('admin.permissions.article.list'), ['only' => ['index', 'ajaxIndex']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.article.create'), ['only' => ['create', 'store']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.article.edit'), ['only' => ['edit', 'update']]);
+        $this->middleware('checkPermission:'.config('admin.global.article.action').',true', ['only' => ['mark']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.article.destory'), ['only' => ['destroy']]);
+    }
+
     public function index()
     {
     	return view('admin.article.list');

@@ -17,7 +17,7 @@ class CategoryRepository
 		if (Cache::has('cateList')) {
 			return Cache::get('cateList');
 		}
-		$cateList = $this->setcateListCache();
+		$cateList = $this->setCateListCache();
 		return $cateList;
 	}
 	/**
@@ -45,11 +45,11 @@ class CategoryRepository
 	 */
 	public function setCateListCache()
 	{
-		$categories = Category::where('status',config('admin.global.status.active'))
-						->orderBy('sort','desc')
-						->orderBy('id','asc')
-						->get()
-						->toArray();
+		$categories = Category::orderBy('sort','desc')
+					->orderBy('id','asc')
+					->get()
+					->toArray();
+		
 		if ($categories) {
 			$cateList = $this->sortCategory($categories);
 			//子分类进行排序

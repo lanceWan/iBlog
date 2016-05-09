@@ -8,6 +8,13 @@ use App\Http\Requests\TagRequest;
 
 class TagController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkPermission:'.config('admin.permissions.tag.list'), ['only' => ['index', 'ajaxIndex']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.tag.create'), ['only' => ['create', 'store']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.tag.edit'), ['only' => ['edit', 'update']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.tag.destory'), ['only' => ['destroy']]);
+    }
     public function index()
     {
         return view('admin.tag.list');

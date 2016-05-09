@@ -7,6 +7,14 @@ use CategoryRepository;
 use App\Http\Requests\CategoryRequest;
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkPermission:'.config('admin.permissions.category.list'), ['only' => ['index','sort']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.category.create'), ['only' => ['store']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.category.edit'), ['only' => ['edit', 'update']]);
+        $this->middleware('checkPermission:'.config('admin.permissions.category.destory'), ['only' => ['destroy']]);
+    }
 	/**
 	 * 分类首页
 	 * @date   2016-05-05
