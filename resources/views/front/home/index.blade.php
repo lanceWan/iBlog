@@ -80,7 +80,7 @@
     </div>
 </div>
 
-<div class="content-md container">
+<div class="content-md container" id="pageScroll">
     <div class="heading-v3 text-center">
         <h2 class="heading-v3-title">Great Diary</h2>
         <div class="divider-v3"><div class="divider-v3-element"><i class="divider-v3-icon fa fa-skyatlas"></i></div></div>
@@ -102,7 +102,7 @@
                     @if($v->img)
                     <img class="img-responsive margin-b-10" src="{{$v->img}}" alt="{{$v->title}}">
                     @endif
-                    {!!$v->intro!!}
+                    <p>{!!$v->intro!!}</p>
                 </div>
                 <div class="blog-grid-supplemental">
                     <span class="blog-grid-supplemental-title">
@@ -121,6 +121,6 @@
     @endforeach
     @endif
 </div>
-{!! $articles->links() !!}
+{!! $articles->fragment('pageScroll')->links() !!}
 <!-- End Masonry Grid -->
 @endsection

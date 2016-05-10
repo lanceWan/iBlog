@@ -26,11 +26,11 @@
 |
 */
 
-// Route::group(['middleware' => ['web']], function () {
-//     Route::get('/home', 'HomeController@index');
-// });
-Route::group(['namespace' => 'Front','middleware' => ['web']], function ($router) {
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/home', 'HomeController@index');
     Route::auth();
+});
+Route::group(['namespace' => 'Front','middleware' => ['web']], function ($router) {
     $router->get('/', 'HomeController@index');
     $router->get('/i18n', 'IndexController@dataTableI18n');
 });

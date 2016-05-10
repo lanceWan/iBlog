@@ -9,7 +9,6 @@
 <meta name="description" content="Ark - Responsive Multi-Purpose Template">
 <meta name="author" content="prothemes.net">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href='https://fonts.googleapis.com/css?family=Roboto:100,400,700,500,300,300italic' rel='stylesheet' type='text/css'>
 <link href="{{asset('front/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{asset('front/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{asset('front/css/animate.css')}}" rel="stylesheet" type="text/css"/>
@@ -108,32 +107,6 @@
             </div>
             <!--// end row -->
         </div>
-
-        <!-- Pagers v2 -->
-        <div class="container">
-            <!-- Paginations v2 -->
-            <div class="paginations-v2 text-center">
-                <ul class="paginations-v2-list">
-                    <li class="previous">
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">Prev</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li class="active"><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li class="next">
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- End Paginations v2 -->
-        </div>
-        <!-- End Pagers v2 -->
 
     
     <!--========== END PAGE CONTENT ==========-->

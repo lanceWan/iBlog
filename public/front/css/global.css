@@ -1,257 +1,4 @@
 @charset "UTF-8";
-/*----------------------------------------------------------------------
-[Master Stylesheet]
-
-	Project:        Ark - Responsive Multi-Purpose Theme
-	Version:        1.2
-	Author:         Prothemes.net
-	Primary use:    Corporate, Business, Portfolio, Landing, Shop and Blog Themes.
-	Email: 			prothemes.net@gmail.com
-	Website:		http://www.prothemes.net
-
-
-[Table of Contents]
-
-	1. Base
-	2. Blog Classic
-	3. Blog Grid
-	4. Blog Sidebar
-	5. Blog Single Post
-	7. Blog Teaser
-	7. News
-	8. Accordion
-	9. Alerts
-	10. Blockquotes
-	11. Breadcrumbs
-	12. Comment Form
-	13. Dividers
-	14. Dropcap
-	15. Heading
-	16. Icon List
-	17. Lists
-	18. Login Form
-	19. Pagination
-	20. Progress Bar
-	21. Scroll to Section
-	22. Tab
-	23. Tables
-	24. Table Wrap
-	25. Theme Icons
-	26. Timeline
-	27. Call to Action
-	28. Clients
-	29. Counters
-	30. Diagonal Content
-	31. Equal Height Block
-	32. Icon Box
-	33. Image Gallery
-	34. Interactive Banner
-	35. Newsletter
-	36. Banner Image
-	37. Parallax
-	38. Piecharts
-	39. Process
-	40. Promo Block
-	41. Services
-	42. Slider Block
-	43. Team Members
-	44. Testimonials
-	45. Video
-	46. Work
-	47. Footer (Default)
-	48. Footer v2
-	49. Footer v3
-	50. Footer v4
-	51. Footer v5
-	52. Footer v6
-	53. Footer v7
-	54. Footer v8
-	55. Header
-	56. Header Center Aligned
-	57. Header Center Aligned Transparent
-	58. Header Fullscreen
-	59. Header Section Scroll
-	60. Header Transparent
-	61. Header Vertical
-	62. Responsive
-	63. Form Modal
-	64. Search Default
-	65. Search Classic
-	66. Search Fullscreen
-	67. Search On Header
-	68. Search Push
-	69. Sidebar
-	70. Topbar Classic
-	71. Topbar e-Commerce
-	72. Topbar Transparent
-	73. Coming Soon
-	74. Contact Us
-	75. FAQ
-	76. Shopify
-	77. Animated Headline
-	78. Animsition
-	79. Back to Top
-	80. Bootstrap Components
-	81. Google Maps
-	82. Masonry Grid
-	83. Owl Carousel
-	84. Portfolio
-	85. Revolution Slider
-	86. Blue Theme Color
-	87. Base Theme Color
-	88. Blue Theme Color
-	89. Blue Grey Theme Color
-	90. Gold Theme Color
-	91. Green Theme Color
-	92. Grey Theme Color
-	93. Pink Theme Color
-	94. Purple Theme Color
-	95. Red Theme Color
-	96. Teal Theme Color
-	97. Colors
-	98. Helpers
------------------------------------------------------------------------*/
-/* =================================================================
-    [Primary Sass files]
-================================================================= */
-/*--------------------------------------------------
-  [Clearfix]
-----------------------------------------------------*/
-/* eg: @include clearfix; */
-/*--------------------------------------------------
-  [Font]
-----------------------------------------------------*/
-/* eg: @include font($size: 14px, $style: italic, $weight: 400, $family: $font-family-base); */
-/*--------------------------------------------------
-  [Positioning]
-----------------------------------------------------*/
-/* eg: @include position(absolute, $top: 5px, $left: 5px); */
-/*--------------------------------------------------
-  [Sizing]
-----------------------------------------------------*/
-/* eg: @include size(100%);
-   @include size(100%, 1px); */
-/*--------------------------------------------------
-  [Center Vertically and/or Horizontally an absolute positioned element]
-----------------------------------------------------*/
-/*--------------------------------------------------
-  [Border Radius]
-----------------------------------------------------*/
-/* eg: @include border-radius(3px); */
-/*--------------------------------------------------
-  [Theme Icons]
-----------------------------------------------------*/
-/* eg: @include theme-icons($color-dark-light, $color-grey, 0, transparent); */
-/* eg: @include theme-icons-size(35px, 35px, $font-size-16, 6px); */
-/*--------------------------------------------------
-  [Theme Buttons]
-----------------------------------------------------*/
-/* eg: @include buttons($color-base, $color-white, transparent, $color-base, 1px, $color-base, $color-base); */
-/* eg: @include button-size($font-size-14, $font-weight-400, 6px 12px); */
-/* eg: @include @include buttons-animate(darken($color-gold, 4%), 10px 15px); */
-/*--------------------------------------------------
-  [Placeholder]
-----------------------------------------------------*/
-/* eg: @include placeholder($color-base); */
-/*--------------------------------------------------
-  [Box Shadow]
-----------------------------------------------------*/
-/* eg: @include box-shadow(0, 2px, 2px, #000, $inset: false); */
-/*--------------------------------------------------
-    [RGBA Background Opacity]
-----------------------------------------------------*/
-/* eg: @include bg-opacity($color-dark, .2); */
-/*--------------------------------------------------
-  [Visibility]
-----------------------------------------------------*/
-/* eg: @include visibility-backface(hidden); */
-/*--------------------------------------------------
-  [Transition]
-----------------------------------------------------*/
-/* eg: @include transition(all, .3s ease); */
-/*--------------------------------------------------
-  [Perspective]
-----------------------------------------------------*/
-/* eg: @include perspective(800px); */
-/*--------------------------------------------------
-  [Cubic Bezier Transition]
-----------------------------------------------------*/
-/* eg: @include cubic-transition($delay: 0, $duration: 200ms, $property: (all)); */
-/*--------------------------------------------------
-  [Transition]
-----------------------------------------------------*/
-/* eg: @include transition(opacity, .3s); */
-/*--------------------------------------------------
-  [Translate 3D Transition]
-----------------------------------------------------*/
-/* eg: @include translate3d(0,0,0); */
-/*--------------------------------------------------
-  [Preserve 3D]
-----------------------------------------------------*/
-/* eg: @include preserve3d(preserve-3d); */
-/*--------------------------------------------------
-  [Rotate]
-----------------------------------------------------*/
-/* eg: @include rotate(45deg); */
-/*--------------------------------------------------
-  [RotateY]
-----------------------------------------------------*/
-/* eg: @include rotateY(45deg); */
-/*--------------------------------------------------
-  [Transform Scale]
-----------------------------------------------------*/
-/* eg: @include transform-scale(1,1); */
-/*--------------------------------------------------
-  [Animation Duration]
-----------------------------------------------------*/
-/* eg: @include animation-duration(.3s); */
-/*--------------------------------------------------
-  [Animation Timing Function]
-----------------------------------------------------*/
-/* eg: @include animation-timing-function(ease); */
-/*--------------------------------------------------
-  [Transform Origin]
-----------------------------------------------------*/
-/* eg: @include transform-origin(left center); */
-/*--------------------------------------------------
-  [Animation Iteraction Count]
-----------------------------------------------------*/
-/* eg: @include animation-iteration-count(infinite); */
-/*--------------------------------------------------
-  [Animation]
-----------------------------------------------------*/
-/* eg: @include animation(toTopFromBottom .3s forwards); */
-/*--------------------------------------------------
-  [Animation Name]
-----------------------------------------------------*/
-/* eg: @include animation-name(egample); */
-/*--------------------------------------------------
-  [Animation Direction]
-----------------------------------------------------*/
-/* eg: @include animation-direction(reverse); */
-/*--------------------------------------------------
-  [Keyframes]
-----------------------------------------------------*/
-/* eg: @include keyframes($keyframes); { @content; } */
-/*--------------------------------------------------
-  [Grayscale]
-----------------------------------------------------*/
-/* eg: @include grayscale(100%); */
-/*--------------------------------------------------
-  [Blur]
-----------------------------------------------------*/
-/* eg: @include blur(5px); */
-/*--------------------------------------------------
-  [Linear Gradient]
-----------------------------------------------------*/
-/* eg: @include gradient(rgba(255,255,255,0), rgba(255,255,255,.9)); */
-/*--------------------------------------------------
-	[Layout Settings & Variables]
-----------------------------------------------------*/
-/*------------------------------------------------------------------
-  	[The "base.scss" contains basic default element styles
-  		(colors, typography, margins & padding).]
-------------------------------------------------------------------*/
 html {
   overflow-x: hidden; }
 
@@ -259,25 +6,24 @@ html, html a, body {
   -webkit-font-smoothing: antialiased; }
 
 body {
-  font-family: Roboto, sans-serif; }
+    font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei";
+    line-height: 1.75em;
+  }
 
 p {
-  font-size: 15px;
-  font-weight: 300;
-  font-family: Roboto, sans-serif;
-  color: #606060;
-  line-height: 1.4; }
+  font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  color: #606060; }
 
 em,
 li,
 li a {
   font-size: 15px;
   font-weight: 300;
-  font-family: Roboto, sans-serif;
+  font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei";
   color: #34343c; }
 
 a {
-  font-family: Roboto, sans-serif;
+  font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei";
   color: #00bcd4;
   outline: 0; }
   a:focus, a:hover, a:active {
@@ -285,10 +31,8 @@ a {
     color: #00bcd4; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
-  font-family: Roboto, sans-serif;
+  font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   color: #34343c;
-  line-height: 1.4;
   margin: 0 0 15px; }
   h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
     color: #34343c; }
@@ -297,6 +41,24 @@ h1, h2, h3, h4, h5, h6 {
       text-decoration: none; }
     h1 > a:focus, h2 > a:focus, h3 > a:focus, h4 > a:focus, h5 > a:focus, h6 > a:focus {
       text-decoration: none; }
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2.5em;
+}
+h3 {
+  font-size: 2em;
+}
+h4 {
+  font-size: 1.5em;
+}
+h5 {
+  font-size: 1em;
+}
+h6 {
+  font-size: 0.75em;
+}
 
 ::selection {
   color: #fff;

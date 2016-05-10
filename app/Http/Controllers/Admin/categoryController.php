@@ -24,6 +24,7 @@ class CategoryController extends Controller
     public function index()
     {
     	$categories = CategoryRepository::index();
+        // dd($categories);
     	return view('admin.cate.list')->with(compact('categories'));
     }
     /**

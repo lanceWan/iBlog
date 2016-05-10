@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use FrontRepository;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\AbstractPaginator;
+use App\Repositories\front\PaginationRepository;
 class FrontServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +20,11 @@ class FrontServiceProvider extends ServiceProvider
             //共享分类数据
             $categories = FrontRepository::getCategories();
             $view->with('categories',$categories);
+        });
+
+        // 使用自定义分页模板
+        Paginator::presenter(function (AbstractPaginator $paginator) {
+            return new PaginationRepository($paginator);
         });
     }
 
