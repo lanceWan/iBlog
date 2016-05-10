@@ -20,7 +20,7 @@
                         <span class="heading-v1-subtitle">碎碎念念的话，伴随着成长</span>
                     </div>
 
-                    <p>时间真的好快的，嗖的一下就长成了今天这模样。永远不会像《挪威森林》村上写的那一句话：一直以为十八岁之后是十九岁，十九岁后是十八岁，如此反复。如今说好的十八岁离开好几年了，好宅不代表着我老，如果认真的去做的更好，只是个开始。如今过的日子并不好过的话，完全可以付出更多的努力再来活一次，找到真正想要的自己。</p>
+                    <p>时间真的好快，嗖的一下就长成了今天这模样。永远不会像《挪威森林》村上写的那一句话：一直以为十八岁之后是十九岁，十九岁后是十八岁，如此反复。如今说好的十八岁离开好几年了，好宅不代表着我老，如果认真的去做的更好，只是个开始。如今过的日子并不好过的话，完全可以付出更多的努力再来活一次，找到真正想要的自己。</p>
                     <p>执着的去做，不怕舍不得睡觉、玩乐、安逸的时间去拼，要知道现在的痛苦和难受都是以前放弃了太多努力。所以现在要抓紧努力，哪怕需要你花全部精力。去拼，如果没有天分，就用时间去换，走得再慢也不要后退。希望再过几年真的被喊叔、阿姨的年纪，那时候回头感谢一下现在选择拼搏的我。</p>
                     <p>没有天分，就用时间去换......</p>
                 </div>
@@ -91,14 +91,18 @@
 @section('content')
 <!-- Masonry Grid -->
 <div class="masonry-grid">
+    @if($articles)
+    @foreach($articles as $v)
     <div class="masonry-grid-item col-1">
         <!-- Blog Grid -->
         <article class="blog-grid">
             <div class="blog-grid-box-shadow">
                 <div class="blog-grid-content">
-                    <h2 class="blog-grid-title-md"><a href="blog_single_standard.html">Donec consequat, ligula eget suscipit laoreet</a></h2>
-                    <img class="img-responsive margin-b-10" src="{{asset('front/img/bg.jpg')}}" alt="">
-                    <p class="margin-b-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel sapien et lacus tempus varius. In finibus lorem vel neque vulputate, vel porta magna molestie.</p>
+                    <h2 class="blog-grid-title-md"><a href="{{url('article/'.$v->id)}}">{{$v->title}}</a></h2>
+                    @if($v->img)
+                    <img class="img-responsive margin-b-10" src="{{$v->img}}" alt="{{$v->title}}">
+                    @endif
+                    {!!$v->intro!!}
                 </div>
                 <div class="blog-grid-supplemental">
                     <span class="blog-grid-supplemental-title">
@@ -114,24 +118,9 @@
         </article>
         <!-- End Blog Grid -->
     </div>
-    <div class="masonry-grid-item col-1">
-        <!-- Blog Grid -->
-        <article class="blog-grid">
-            <div class="blog-grid-box-shadow">
-                <div class="blog-grid-content">
-                    <h2 class="blog-grid-title-el"><a class="blog-grid-title-link" href="blog_single_standard.html">Sed quia consequuntur magni dolores</a></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel sapien et lacus tempus varius. In finibus lorem vel.</p>
-                </div>
-                <div class="blog-grid-supplemental">
-                    <span class="blog-grid-supplemental-title">
-                        <a class="blog-grid-supplemental-category" href="#">News</a>
-                        - 12/21/2016
-                    </span>
-                </div>
-            </div>
-        </article>
-        <!-- End Blog Grid -->
-    </div>
+    @endforeach
+    @endif
 </div>
+{!! $articles->links() !!}
 <!-- End Masonry Grid -->
 @endsection

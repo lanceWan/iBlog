@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\front;
 use App\Models\Category;
+use App\Models\Article;
 use Cache;
 class FrontRepository
 {
@@ -65,6 +66,18 @@ class FrontRepository
 			return $cateList;
 		}
 		return [];
+	}
+
+	/**
+	 * 获取文章
+	 * @date   2016-05-09
+	 * @author 晚黎
+	 * @return [type]     [description]
+	 */
+	public function getArticles()
+	{
+		$articles = Article::where('status',config('admin.global.status.active'))->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
+		return $articles;
 	}
 	
 }

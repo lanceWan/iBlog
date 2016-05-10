@@ -74,4 +74,6 @@ return[
 	'imagePath' => 'iwanli/image/',
 	//获取七牛上文件名称（去掉URL前多少位）
 	'deleteLength' => '38',
+	// 每页显示条数
+	'paginate' => 4,
 ];
