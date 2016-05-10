@@ -16,7 +16,7 @@
                 <div class="col-sm-12">
                     <!-- Heading v1 -->
                     <div class="heading-v1 margin-b-20 text-center">
-                        <h2 class="heading-v1-title">Story About Life</h2>
+                        <h2 class="heading-v1-title">Story About Me</h2>
                         <span class="heading-v1-subtitle">碎碎念念的话，伴随着成长</span>
                     </div>
 

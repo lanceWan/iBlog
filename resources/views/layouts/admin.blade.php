@@ -103,7 +103,8 @@
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
-                    @yield('content')
+                    @section('content')
+                    @show
                 </div>
                 <!-- END CONTENT BODY -->
             </div>

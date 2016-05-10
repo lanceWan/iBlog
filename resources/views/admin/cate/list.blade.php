@@ -31,8 +31,8 @@
               <div class="portlet-body">
                   <div class="dd" id="nestable_list">
                       <ol class="dd-list">
-                          @if($categories)
-                          @foreach($categories as $v)
+                          @if($cate)
+                          @foreach($cate as $v)
                           @if($v['child'])
                           <li class="dd-item" data-id="{{$v['id']}}" data-pid="{{$v['pid']}}">
                             <div class="dd-handle dd3-handle"></div>

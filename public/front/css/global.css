@@ -104,10 +104,10 @@ a:focus {
     font-size: 24px; }
 .blog-grid .blog-grid-title-el {
   font-size: 28px;
-  font-family: Droid Serif, serif; }
+   }
   .blog-grid .blog-grid-title-el .blog-grid-title-link {
     font-size: 30px;
-    font-family: Droid Serif, serif;
+    
     text-decoration: none; }
 
 /* Supplemental */
@@ -118,11 +118,11 @@ a:focus {
 .blog-grid .blog-grid-supplemental-title {
   font-size: 12px;
   font-style: italic;
-  font-family: Droid Serif, serif;
+  
   color: #606060; }
 .blog-grid .blog-grid-supplemental-category {
   font-size: 13px;
-  font-family: Droid Serif, serif;
+  
   color: #00bcd4; }
 
 /* Media Queries below 480px */
@@ -393,7 +393,7 @@ a:focus {
     display: block;
     font-size: 18px;
     font-style: italic;
-    font-family: Droid Serif, serif;
+    
     color: #fff;
     opacity: .8; }
   .breadcrumbs-v5 .breadcrumbs-v5-divider {
@@ -1276,12 +1276,12 @@ a:focus {
 .heading-v1 .heading-v1-title {
   font-size: 28px;
   font-style: italic;
-  font-family: Droid Serif, serif; }
+   }
 .heading-v1 .heading-v1-subtitle {
   max-width: 350px;
   font-size: 16px;
   font-style: italic;
-  font-family: Droid Serif, serif;
+  
   color: #00bcd4;
   margin-bottom: 20px; }
 .heading-v1 .heading-v1-text {
@@ -1331,7 +1331,7 @@ a:focus {
   .heading-v3 .heading-v3-text {
     margin-bottom: 0;
     font-style: italic;
-    font-family: Droid Serif, serif; }
+     }
 
 /* White Version */
 .heading-v3.heading-v3-white .heading-v3-subtitle,
@@ -1859,7 +1859,7 @@ a:focus {
     display: block;
     font-size: 16px;
     font-style: italic;
-    font-family: Droid Serif, serif;
+    
     color: #00bcd4;
     margin-bottom: 5px; }
   .timeline-v4 .timeline-v4-title {
@@ -2019,7 +2019,7 @@ a:focus {
       position: relative;
       top: 15px;
       font-size: 50px;
-      font-family: Droid Serif, serif;
+      
       color: #a6a6a6;
       line-height: 1;
       content: "“";
@@ -2593,7 +2593,7 @@ a:focus {
 
 /* Navbar Nav */
 .header-transparent .navbar-nav .nav-item-child {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   color: #fff;
   background: transparent;
@@ -3112,7 +3112,7 @@ a:focus {
   .animated-headline-v1 .animated-headline-v1-subtitle {
     font-size: 18px;
     font-style: italic;
-    font-family: Droid Serif, serif;
+    
     opacity: .8; }
 
 @-webkit-keyframes animated-headline-v1-pulse {

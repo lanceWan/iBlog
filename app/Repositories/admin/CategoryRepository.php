@@ -13,9 +13,8 @@ class CategoryRepository
 	 */
 	public function index()
 	{
-		//判断是否缓存menu数据
-		if (Cache::has('cateList')) {
-			return Cache::get('cateList');
+		if (Cache::has('categoriesList')) {
+			return Cache::get('categoriesList');
 		}
 		$cateList = $this->setCateListCache();
 		return $cateList;
@@ -60,8 +59,7 @@ class CategoryRepository
 	    			array_multisort($sort,SORT_DESC,$v['child']);
 	    		}
 	    	}
-			//缓存数据
-			Cache::forever('cateList', $cateList);
+			Cache::forever('categoriesList', $cateList);
 			return $cateList;
 		}
 		return [];
