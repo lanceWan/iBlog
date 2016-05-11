@@ -129,9 +129,9 @@
                     <!-- Testimonials -->
                     <div class="footer-testimonials">
                         <div class="footer-testimonials-quote">
-                            <p>Ark is the most amazing premium template with powerful customization settings and ultra fully responsive template with modern and smart design.</p>
+                            <p>世上本没有对错，看问题的角度不同，答案不同而已，我们应该学会常常用别人的角度看世界，多一分宽容，多一分理解，多一分求同存异。</p>
                         </div>
-                        <span class="footer-testimonials-author">&#8212; Kenny Johnson</span>
+                        <span class="footer-testimonials-author">&#8212; 不要总以为自己是对的</span>
                     </div>
                     <!-- End Testimonials -->
                 </div>
@@ -140,9 +140,7 @@
 
             <!-- Copyright -->
             <ul class="list-inline footer-copyright">
-                <li class="footer-copyright-item">Copyright &#169; 2016 Prothemes. All Rights Reserved.</li>
-                <li class="footer-copyright-item"><a href="#">Terms &amp; Conditions</a></li>
-                <li class="footer-copyright-item"><a href="#">Privacy &amp; Policy</a></li>
+                <li class="footer-copyright-item">Copyright &#169; 2016 iWanli. All Rights Reserved.</li>
             </ul>
             <!-- End Copyright -->
         </div>
