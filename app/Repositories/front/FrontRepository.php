@@ -79,5 +79,14 @@ class FrontRepository
 		$articles = Article::where('status',config('admin.global.status.active'))->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
 		return $articles;
 	}
+
+	public function showArticle($id)
+	{
+		$article = Article::with('tag')->find($id);
+		if ($article) {
+			return $article;
+		}
+		abort(404);
+	}
 	
 }

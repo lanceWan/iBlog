@@ -38,7 +38,6 @@
 
                 <!--========== BLOG SIDEBAR ==========-->
                 <div class="col-md-3">
-
                     <!-- Blog Sidebar -->
                     <div class="blog-sidebar margin-b-30">
                         <div class="blog-sidebar-heading">

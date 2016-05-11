@@ -111,4 +111,9 @@ class ArticleController extends Controller
         ArticleRepository::destroy($id);
         return redirect('admin/article');
     }
+
+    public function show($id)
+    {
+        return redirect('article/'.$id);
+    }
 }
