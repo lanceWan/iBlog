@@ -19,54 +19,52 @@
 @endsection
 @section('content')
 <article class="blog-grid margin-b-30">
-            
+    <!-- Blog Grid Content -->
+    <div class="blog-grid-content">
+        <h2 class="blog-grid-title-lg">{{$article->title}}</h2>
 
-            <!-- Blog Grid Content -->
-            <div class="blog-grid-content">
-                <h2 class="blog-grid-title-lg">{{$article->title}}</h2>
+        @if($article->img)
+        <img class="img-responsive margin-b-20" src="{{$article->img}}" alt="">
+        @endif
+        {!!$article->content_html!!}
+        
+    </div>
+    <!-- End Blog Grid Content -->
+    <div class="divider-v1"><div class="divider-v1-element"><i class="divider-v1-icon fa fa-skyatlas"></i></div></div>
 
-                @if($article->img)
-                <img class="img-responsive margin-b-20" src="{{$article->img}}" alt="">
-                @endif
-                {!!$article->content_html!!}
-                
+    @if($article->tag)
+    <ul class="list-inline blog-sidebar-tags">
+    @foreach($article->tag as $v)
+        <li><a class="radius-50" href="#">{{$v->name}}</a></li>
+    @endforeach
+    </ul>
+    @endif
+
+    <!-- Blog Comment -->
+    <div class="bg-color-white margin-b-30">
+        <div class="blog-single-post-content">
+            <!-- Heading v1 -->
+            <div class="heading-v1 text-center margin-b-50">
+                <h2 class="heading-v1-title">Leave a comment</h2>
             </div>
-            <!-- End Blog Grid Content -->
-            <div class="divider-v1"><div class="divider-v1-element"><i class="divider-v1-icon fa fa-skyatlas"></i></div></div>
+            <!-- End Heading v1 -->
 
-            @if($article->tag)
-            <ul class="list-inline blog-sidebar-tags">
-            @foreach($article->tag as $v)
-                <li><a class="radius-50" href="#">{{$v->name}}</a></li>
-            @endforeach
-            </ul>
-            @endif
-
-            <!-- Blog Comment -->
-            <div class="bg-color-white margin-b-30">
-                <div class="blog-single-post-content">
-                    <!-- Heading v1 -->
-                    <div class="heading-v1 text-center margin-b-50">
-                        <h2 class="heading-v1-title">Leave a comment</h2>
-                    </div>
-                    <!-- End Heading v1 -->
-
-                    <!-- Single Post Comment Form -->
-                    <div class="blog-single-post-comment-form">
-                        <div class="ds-thread" data-thread-key="{{$article->id}}" data-title="{{$article->title}}" data-url="{{url('article/'.$article->id)}}"></div>
-                    <script type="text/javascript">
-                    var duoshuoQuery = {short_name:"ibanya"};
-                        (function() {
-                            var ds = document.createElement('script');
-                            ds.type = 'text/javascript';ds.async = true;
-                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                            ds.charset = 'UTF-8';
-                            (document.getElementsByTagName('head')[0] 
-                             || document.getElementsByTagName('body')[0]).appendChild(ds);
-                        })();
-                        </script>
-                    </div>
-                </div>
+            <!-- Single Post Comment Form -->
+            <div class="blog-single-post-comment-form">
+                <div class="ds-thread" data-thread-key="{{$article->id}}" data-title="{{$article->title}}" data-url="{{url('article/'.$article->id)}}"></div>
+            <script type="text/javascript">
+            var duoshuoQuery = {short_name:"ibanya"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] 
+                     || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+                </script>
             </div>
-        </article>
+        </div>
+    </div>
+</article>
 @endsection
