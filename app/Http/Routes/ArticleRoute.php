@@ -4,6 +4,7 @@
  */
 $router->group(['prefix' => 'article'], function($router){
 	$router->get('ajaxIndex', 'ArticleController@ajaxIndex');
+	$router->post('upload', 'ArticleController@upload');
 	$router->get('/{id}/mark/{status}', 'ArticleController@mark')
 		   ->where([
 		   	'id' => '[0-9]+',

@@ -182,7 +182,9 @@
       gotoLine:false,
       emoji:true,
       saveHTMLToTextarea:true,
-      path    : "{{asset('backend/plugins/editor/lib')}}/"
+      path    : "{{asset('backend/plugins/editor/lib')}}/",
+      imageUpload : true,
+      imageUploadURL : '/admin/article/upload'
     });
 
     $(".bs-select").selectpicker({

@@ -112,8 +112,28 @@ class ArticleController extends Controller
         return redirect('admin/article');
     }
 
+    /**
+     * 查看文章信息
+     * @author 晚黎
+     * @date   2016-05-12T09:41:40+0800
+     * @param  [type]                   $id [description]
+     * @return [type]                       [description]
+     */
     public function show($id)
     {
         return redirect('article/'.$id);
+    }
+
+    /**
+     * markdown上传图片
+     * @author 晚黎
+     * @date   2016-05-12T09:42:04+0800
+     * @param  Request                  $request [description]
+     * @return [type]                            [description]
+     */
+    public function upload(Request $request)
+    {
+        $response = ArticleRepository::upload($request);
+        return response()->json($response);
     }
 }

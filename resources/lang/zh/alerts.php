@@ -65,6 +65,8 @@ return [
         'updated_error'     => '修改文章失败.',
         'deleted_success'   => '彻底删除文章成功.',
         'deleted_error'     => '彻底删除文章失败.',
+        'upload_success'    => '上传成功.',
+        'upload_error'      => '上传失败.',
     ],
     'deleteTitle' => '确定要彻底删除么?',
 
