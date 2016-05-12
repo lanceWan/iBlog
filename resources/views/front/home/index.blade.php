@@ -100,7 +100,9 @@
                 <div class="blog-grid-content">
                     <h2 class="blog-grid-title-md"><a href="{{url('article/'.$v->id)}}">{{$v->title}}</a></h2>
                     @if($v->img)
-                    <img class="img-responsive margin-b-10" src="{{$v->img}}" alt="{{$v->title}}">
+                        <div class="starImg">
+                            <a href="{{url('article/'.$v->id)}}"><img class="img-responsive margin-b-10" src="{{$v->img}}" alt="{{$v->title}}"></a>
+                        </div>
                     @endif
                     <p>{!!$v->intro!!}</p>
                 </div>

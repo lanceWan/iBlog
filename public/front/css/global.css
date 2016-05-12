@@ -6,7 +6,7 @@ html, html a, body {
   -webkit-font-smoothing: antialiased; }
 
 body {
-    font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei";
+    font-family:"Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
     line-height: 1.75em;
   }
 
@@ -19,11 +19,11 @@ li,
 li a {
   font-size: 15px;
   font-weight: 300;
-  font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei";
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
   color: #34343c; }
 
 a {
-  font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei";
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
   color: #00bcd4;
   outline: 0; }
   a:focus, a:hover, a:active {
@@ -4551,5 +4551,3 @@ a:focus {
 
 .radius-circle {
   border-radius: 50% !important; }
-
-/*# sourceMappingURL=global.css.map */
