@@ -13,8 +13,8 @@ class CategoryRepository
 	 */
 	public function index()
 	{
-		if (Cache::has('categoriesList')) {
-			return Cache::get('categoriesList');
+		if (Cache::has(config('admin.global.cache.category'))) {
+			return Cache::get(config('admin.global.cache.category'));
 		}
 		$cateList = $this->setCateListCache();
 		return $cateList;
@@ -59,7 +59,7 @@ class CategoryRepository
 	    			array_multisort($sort,SORT_DESC,$v['child']);
 	    		}
 	    	}
-			Cache::forever('categoriesList', $cateList);
+			Cache::forever(config('admin.global.cache.category'), $cateList);
 			return $cateList;
 		}
 		return [];
@@ -97,7 +97,7 @@ class CategoryRepository
 			$sort = $category->sort;
 			$isUpdate = $category->fill($request->all())->save();
 			if ($isUpdate) {
-				$this->setCateListCache();
+				$this->clearCache();
 				Flash::success(trans('alerts.categories.updated_success'));
 				return true;
 			}
@@ -118,7 +118,7 @@ class CategoryRepository
 		$categories = new Category;
 		if ($categories->fill($request->all())->save()) {
 			// 分类发生变化，更新分类数组
-			$this->setCateListCache();
+			$this->clearCache();
 			Flash::success(trans('alerts.categories.created_success'));
 			return true;
 		}
@@ -145,7 +145,7 @@ class CategoryRepository
 			$category->pid = $itemParentId;
 			if ($category->save()) {
 				//更新分类缓存数据
-				$this->setCateListCache();
+				$this->clearCache();
 				return ['status' => true,'msg' => trans('alerts.categories.updated_success')];
 			}
 			return ['status' => false,'msg' => trans('alerts.categories.updated_error')];
@@ -164,11 +164,24 @@ class CategoryRepository
 		$isDestroy = Category::destroy($id);
 		if ($isDestroy) {
 			//更新缓存数据
-			$this->setCateListCache();
+			$this->clearCache();
 			Flash::success(trans('alerts.categories.deleted_success'));
 			return true;
 		}
 		Flash::error(trans('alerts.categories.deleted_error'));
 		return false;
+	}
+	/**
+	 * 更新缓存
+	 * @author 晚黎
+	 * @date   2016-05-13T15:45:53+0800
+	 * @return [type]                   [description]
+	 */
+	private function clearCache()
+	{
+		//更新缓存数据
+		$this->setCateListCache();
+		Cache::forget(config('admin.global.cache.front'));
+		Cache::forget(config('admin.global.cache.article_cate'));
 	}
 }

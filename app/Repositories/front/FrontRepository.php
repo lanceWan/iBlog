@@ -14,8 +14,8 @@ class FrontRepository
 	public function getCategories()
 	{
 		//判断是否缓存menu数据
-		if (Cache::has('frontMenu')) {
-			return Cache::get('frontMenu');
+		if (Cache::has(config('admin.global.cache.front'))) {
+			return Cache::get(config('admin.global.cache.front'));
 		}
 		$cateList = $this->setCateListCache();
 		return $cateList;
@@ -62,7 +62,7 @@ class FrontRepository
 	    		}
 	    	}
 			//缓存数据
-			Cache::forever('frontMenu', $cateList);
+			Cache::forever(config('admin.global.cache.front'), $cateList);
 			return $cateList;
 		}
 		return [];
@@ -76,7 +76,8 @@ class FrontRepository
 	 */
 	public function getArticles()
 	{
-		$articles = Article::where('status',config('admin.global.status.active'))->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
+		$articles = Article::with(['tag','category'])->where('status',config('admin.global.status.active'))->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
+
 		return $articles;
 	}
 
@@ -84,9 +85,41 @@ class FrontRepository
 	{
 		$article = Article::with('tag')->find($id);
 		if ($article) {
+			$article->category = $this->getArticelCategory($article->category_id);
+			// 添加访问次数
+			if (Cache::has(config('admin.global.cache.view').$article->id)) {
+				Cache::increment(config('admin.global.cache.view').$article->id);
+			}else{
+				Cache::forever(config('admin.global.cache.view').$article->id ,'1');
+			}
 			return $article;
 		}
 		abort(404);
+	}
+
+	/**
+	 * 获取文章的分类
+	 * @author 晚黎
+	 * @date   2016-05-13T15:27:07+0800
+	 * @param  [type]                   $category_id [description]
+	 * @return [type]                                [description]
+	 */
+	public function getArticelCategory($category_id)
+	{
+		if (Cache::has(config('admin.global.cache.article_cate'))) {
+			$cate = Cache::get(config('admin.global.cache.article_cate'));
+			return $cate[$category_id];
+		}
+		$categories = Category::all()->keyBy('id');
+		if ($categories) {
+			$temp = [];
+			foreach ($categories as $key => $cate) {
+				$temp[$cate->id] = $cate->name;
+			}
+			Cache::forever(config('admin.global.cache.article_cate'),$temp);
+			return $temp[$category_id];
+		}
+		return '';
 	}
 	
 }

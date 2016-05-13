@@ -116,9 +116,7 @@ a:focus {
   background: #fff;
   padding: 20px; }
 .blog-grid .blog-grid-supplemental-title {
-  font-size: 12px;
-  font-style: italic;
-  
+  font-size: 12px;  
   color: #606060; }
 .blog-grid .blog-grid-supplemental-category {
   font-size: 13px;

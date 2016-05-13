@@ -108,12 +108,11 @@
                 </div>
                 <div class="blog-grid-supplemental">
                     <span class="blog-grid-supplemental-title">
-                        <a class="blog-grid-supplemental-category" href="#">Opinion</a>
-                        - 12/21/2016
+                        <a class="blog-grid-supplemental-category" href="{{url('cate/'.$v->category->id)}}"><i class="fa fa-leaf"></i> {{$v->category->name}}</a>
+                         -  <i class="fa fa-clock-o"></i> {{$v->created_at}}
                     </span>
                     <span class="blog-grid-supplemental-title pull-right">
-                        <a class="blog-grid-supplemental-category" href="#">News</a>
-                        - 12/21/2016
+                        <i class="fa fa-eye"></i> {{Cache::get(config('admin.global.cache.view').$v->id, '0')}}
                     </span>
                 </div>
             </div>

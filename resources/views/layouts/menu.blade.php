@@ -47,7 +47,7 @@
                 <div class="menu-container">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-item-child radius-3 active" href="javascript:void(0);">
+                            <a class="nav-item-child radius-3 active" href="{{url('/')}}">
                                 Home
                             </a>
                         </li>

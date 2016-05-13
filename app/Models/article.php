@@ -24,4 +24,9 @@ class article extends Model
     {
     	return $this->belongsToMany('App\Models\Tag','article_tag','article_id','tag_id')->withTimestamps();
     }
+
+    public function category()
+    {
+        return $this->hasOne('App\Models\Category','id','category_id');
+    }
 }

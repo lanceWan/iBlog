@@ -76,4 +76,12 @@ return[
 	'deleteLength' => '38',
 	// 每页显示条数
 	'paginate' => 6,
+	// redis缓存
+	'cache' => [
+		'menu' => 'menuList',
+		'front' => 'frontMenu',
+		'category' => 'category',
+		'article_cate' => 'article_cate',
+		'view' => 'article:',
+	]
 ];
