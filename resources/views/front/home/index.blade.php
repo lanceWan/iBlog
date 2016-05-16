@@ -8,13 +8,11 @@
         </p>
     </div>
 </div>
-<!--========== PAGE CONTENT ==========-->
 <div class="bg-color-sky-light">
     <div class="container-sm">
         <div class="bg-color-white border-1 padding-40 margin-t-o-80">
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- Heading v1 -->
                     <div class="heading-v1 margin-b-20 text-center">
                         <h2 class="heading-v1-title">Story About Me</h2>
                         <span class="heading-v1-subtitle">碎碎念念的话，伴随着成长</span>
@@ -25,58 +23,45 @@
                     <p>没有天分，就用时间去换......</p>
                 </div>
             </div>
-            <!--// end row -->
         </div>
-
-        <!-- Counters v1 -->
         <div class="content-md">
             <div class="counters-v1">
                 <div class="row">
                     <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-first">
-                        <!-- Counters v1 Body -->
                         <div class="counters-v1-body wow fadeInUp" data-wow-duration=".5" data-wow-delay=".3s">
                             <span class="counters-v1-subtitle">Over</span>
                             <figure class="counter counters-v1-number">30</figure>
                             <br/>
                             <h4 class="counters-v1-title">Features</h4>
                         </div>
-                        <!-- End Counters v1 Body -->
                     </div>
                     <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-second">
-                        <!-- Counters v1 Body -->
                         <div class="counters-v1-body wow fadeInDown" data-wow-duration=".5" data-wow-delay=".3s">
                             <span class="counters-v1-subtitle">Over</span>
                             <figure class="counter counters-v1-number">150</figure>
                             <br/>
                             <h4 class="counters-v1-title">Theme Pages</h4>
                         </div>
-                        <!-- End Counters v1 Body -->
                     </div>
                     <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-third">
-                        <!-- Counters v1 Body -->
                         <div class="counters-v1-body wow fadeInUp" data-wow-duration=".5" data-wow-delay=".3s">
                             <span class="counters-v1-subtitle">Over</span>
                             <figure class="counter counters-v1-number">10</figure>
                             <br/>
                             <h4 class="counters-v1-title">Colors</h4>
                         </div>
-                        <!-- End Counters v1 Body -->
                     </div>
                     <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-third">
-                        <!-- Counters v1 Body -->
                         <div class="counters-v1-body wow fadeInDown" data-wow-duration=".5" data-wow-delay=".3s">
                             <span class="counters-v1-subtitle">Over</span>
                             <figure class="counter counters-v1-number">5</figure>
                             <br/>
                             <h4 class="counters-v1-title">Header Options</h4>
                         </div>
-                        <!-- End Counters v1 Body -->
                     </div>
                 </div>
-                <!-- // end row -->
             </div>
         </div>
-        <!-- End Counters v1 -->
     </div>
 </div>
 
@@ -89,12 +74,10 @@
 </div>
 @endsection
 @section('content')
-<!-- Masonry Grid -->
 <div class="masonry-grid">
     @if($articles)
     @foreach($articles as $v)
     <div class="masonry-grid-item col-1">
-        <!-- Blog Grid -->
         <article class="blog-grid">
             <div class="blog-grid-box-shadow">
                 <div class="blog-grid-content">
@@ -117,11 +100,9 @@
                 </div>
             </div>
         </article>
-        <!-- End Blog Grid -->
     </div>
     @endforeach
     @endif
 </div>
 {!! $articles->fragment('pageScroll')->links() !!}
-<!-- End Masonry Grid -->
 @endsection

@@ -99,9 +99,9 @@
                 <div class="col-sm-6">
                     <div class="footer-testimonials">
                         <div class="footer-testimonials-quote">
-                            <p>世上本没有对错，看问题的角度不同，答案不同而已，我们应该学会常常用别人的角度看世界，多一分宽容，多一分理解，多一分求同存异。</p>
+                            <p>当你的才华还撑不起你的野心时，就应该静下心来学习,当你的能力还驾驭不了你的目标时，就应该沉下心来历练.</p>
                         </div>
-                        <span class="footer-testimonials-author">&#8212; 不要总以为自己是对的</span>
+                        <span class="footer-testimonials-author">&#8212; iWanli</span>
                     </div>
                 </div>
             </div>
