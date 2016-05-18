@@ -3,6 +3,7 @@ namespace App\Repositories\front;
 use App\Models\Category;
 use App\Models\Article;
 use Cache;
+use Redis;
 class FrontRepository
 {
 	/**
@@ -76,7 +77,7 @@ class FrontRepository
 	 */
 	public function getArticles()
 	{
-		$articles = Article::with(['tag','category'])->where('status',config('admin.global.status.active'))->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
+		$articles = Article::where('status',config('admin.global.status.active'))->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
 
 		return $articles;
 	}
@@ -85,13 +86,8 @@ class FrontRepository
 	{
 		$article = Article::with('tag')->find($id);
 		if ($article) {
-			$article->category = $this->getArticelCategory($article->category_id);
 			// 添加访问次数
-			if (Cache::has(config('admin.global.cache.view').$article->id)) {
-				Cache::increment(config('admin.global.cache.view').$article->id);
-			}else{
-				Cache::forever(config('admin.global.cache.view').$article->id ,'1');
-			}
+			Redis::command('INCR',[config('admin.global.redis.article_view').$article->id]);
 			return $article;
 		}
 		abort(404);
@@ -106,9 +102,21 @@ class FrontRepository
 	 */
 	public function getArticelCategory($category_id)
 	{
+		$categories = $this->getAllCategory();
+		return $categories ? $categories[$category_id] : '';
+	}
+
+	/**
+	 * 获取缓存中所有的分类
+	 * @author 晚黎
+	 * @date   2016-05-18T17:40:08+0800
+	 * @return [type]                   [description]
+	 */
+	public function getAllCategory()
+	{
 		if (Cache::has(config('admin.global.cache.article_cate'))) {
 			$cate = Cache::get(config('admin.global.cache.article_cate'));
-			return $cate[$category_id];
+			return $cate;
 		}
 		$categories = Category::all()->keyBy('id');
 		if ($categories) {
@@ -117,9 +125,22 @@ class FrontRepository
 				$temp[$cate->id] = $cate->name;
 			}
 			Cache::forever(config('admin.global.cache.article_cate'),$temp);
-			return $temp[$category_id];
+			return $temp;
 		}
 		return '';
+	}
+
+	/**
+	 * 获取分类下面的文章
+	 * @author 晚黎
+	 * @date   2016-05-18T17:22:28+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function getArticlesByCategory($id)
+	{
+		$articles = Article::where(['category_id'=>$id,'status' => config('admin.global.status.active')])->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
+		return $articles;
 	}
 	
 }

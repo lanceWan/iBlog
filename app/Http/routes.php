@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['namespace' => 'Front','middleware' => ['web']], function ($router) {
     $router->get('/', 'HomeController@index');
     $router->get('article/{id}','ArticleController@show')->where(['id' => '\d+']);
+    $router->get('cate/{id}','CategoryController@show')->where(['id' => '\d+']);
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => ['web', 'auth']], function ($router) {

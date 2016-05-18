@@ -47,7 +47,7 @@
                 <div class="menu-container">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-item-child radius-3 active" href="{{url('/')}}">
+                            <a class="nav-item-child radius-3" href="{{url('/')}}">
                                 Home
                             </a>
                         </li>
@@ -55,7 +55,7 @@
                         @foreach($categories as $cate)
                         @if($cate['child'])
                             <li class="nav-item dropdown">
-                            <a class="nav-item-child dropdown-toggle radius-3" href="{{url('cate/'.$cate['id'])}}" data-toggle="dropdown">
+                            <a class="nav-item-child dropdown-toggle radius-3" href="javascript:void(0)" onclick="return false" data-toggle="dropdown">
                                 {{$cate['name']}}
                             </a>
                             <ul class="dropdown-menu">

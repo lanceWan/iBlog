@@ -5,6 +5,7 @@ use App\Models\Tag;
 use Carbon\Carbon;
 use Flash;
 use zgldh\QiniuStorage\QiniuStorage;
+use Redis;
 /**
 * 文章仓库
 */
@@ -123,6 +124,10 @@ class ArticleRepository
 				$ids = array_merge($ids,$data['tag']);
 			}
 			$article->tag()->sync($ids);
+			// 添加文章信息到redis中
+			Redis::lpush(config('admin.global.redis.article_id'),$article->id);
+			Redis::command('SET',[config('admin.global.redis.article_view').$article->id,0]);
+			
 			Flash::success(trans('alerts.articles.created_success'));
 			return true;
 		}

@@ -82,6 +82,10 @@ return[
 		'front' => 'frontMenu',
 		'category' => 'category',
 		'article_cate' => 'article_cate',
-		'view' => 'article:',
-	]
+	],
+	// redis存储文章浏览量
+	'redis' => [
+		'article_id' => 'article:id',
+		'article_view' => 'article:view_',
+	],
 ];
