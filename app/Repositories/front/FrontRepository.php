@@ -81,7 +81,13 @@ class FrontRepository
 
 		return $articles;
 	}
-
+	/**
+	 * 文章详情
+	 * @author 晚黎
+	 * @date   2016-05-18T20:54:29+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
 	public function showArticle($id)
 	{
 		$article = Article::with('tag')->find($id);

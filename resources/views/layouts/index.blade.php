@@ -28,12 +28,14 @@
                     @yield('content')
                 </div>
                 <div class="col-md-3">
+                    @section('rightSide')
                     <div class="blog-sidebar margin-b-30">
                         <div class="blog-sidebar-heading">
-                            <i class="blog-sidebar-heading-icon icon-tools"></i>
-                            <h4 class="blog-sidebar-heading-title">Post Timeline</h4>
+                            <i class="blog-sidebar-heading-icon fa fa-fire"></i>
+                            <h4 class="blog-sidebar-heading-title">{{trans('labels.home.hot')}}</h4>
                         </div>
-                        <div class="blog-sidebar-content blog-sidebar-content-height scrollbar">
+                        <div class="blog-sidebar-content scrollbar">
+                            <!--Timeline v2 -->
                             <ul class="timeline-v2">
                                 <li class="timeline-v2-list-item">
                                     <i class="timeline-v2-badge-icon radius-circle fa fa-calendar"></i>
@@ -62,14 +64,17 @@
                                 </li>
                                 <li class="clearfix" style="float: none;"></li>
                             </ul>
+                            <!-- End Timeline v2 -->
                         </div>
                     </div>
+
                     <div class="blog-sidebar">
                         <div class="blog-sidebar-heading">
-                            <i class="blog-sidebar-heading-icon icon-paperclip"></i>
-                            <h4 class="blog-sidebar-heading-title">Tags</h4>
+                            <i class="blog-sidebar-heading-icon fa fa-paperclip"></i>
+                            <h4 class="blog-sidebar-heading-title">{{trans('labels.home.tag')}}</h4>
                         </div>
                         <div class="blog-sidebar-content">
+                            <!-- Blog Grid Tags -->
                             <ul class="list-inline blog-sidebar-tags">
                                 <li><a class="radius-50" href="#">envato</a></li>
                                 <li><a class="radius-50" href="#">featured</a></li>
@@ -80,8 +85,10 @@
                                 <li><a class="radius-50" href="#">photoshop</a></li>
                                 <li><a class="radius-50" href="#">wordpress</a></li>
                             </ul>
+                            <!-- End Blog Grid Tags -->
                         </div>
                     </div>
+                    @show
                 </div>
             </div>
         </div>
@@ -90,10 +97,10 @@
             <div class="row margin-b-50">
                 <div class="col-sm-6 sm-margin-b-30">
                     <div class="footer-address">
-                        <h3 class="footer-title">Headquarter</h3>
-                        <p class="footer-address-text">795 Folsom Ave, Suite 600, San Francisco, CA 94107</p>
-                        <p class="footer-address-text">+123 456 7890</p>
-                        <a class="footer-address-link" href="#">prothemes.net@gmail.com</a>
+                        <h3 class="footer-title">About Me</h3>
+                        <p class="footer-address-text">i'm PHPer</p>
+                        <p class="footer-address-text">QQ:709344897</p>
+                        <a class="footer-address-link" href="mailto:709344897@qq.com">709344897@qq.com</a>
                     </div>
                 </div>
                 <div class="col-sm-6">

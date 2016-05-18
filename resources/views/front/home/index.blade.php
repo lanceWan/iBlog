@@ -24,44 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="content-md">
-            <div class="counters-v1">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-first">
-                        <div class="counters-v1-body wow fadeInUp" data-wow-duration=".5" data-wow-delay=".3s">
-                            <span class="counters-v1-subtitle">Over</span>
-                            <figure class="counter counters-v1-number">30</figure>
-                            <br/>
-                            <h4 class="counters-v1-title">Features</h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-second">
-                        <div class="counters-v1-body wow fadeInDown" data-wow-duration=".5" data-wow-delay=".3s">
-                            <span class="counters-v1-subtitle">Over</span>
-                            <figure class="counter counters-v1-number">150</figure>
-                            <br/>
-                            <h4 class="counters-v1-title">Theme Pages</h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-third">
-                        <div class="counters-v1-body wow fadeInUp" data-wow-duration=".5" data-wow-delay=".3s">
-                            <span class="counters-v1-subtitle">Over</span>
-                            <figure class="counter counters-v1-number">10</figure>
-                            <br/>
-                            <h4 class="counters-v1-title">Colors</h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6 xs-full-width counters-v1-border counters-v1-border-third">
-                        <div class="counters-v1-body wow fadeInDown" data-wow-duration=".5" data-wow-delay=".3s">
-                            <span class="counters-v1-subtitle">Over</span>
-                            <figure class="counter counters-v1-number">5</figure>
-                            <br/>
-                            <h4 class="counters-v1-title">Header Options</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="content"></div>
     </div>
 </div>
 

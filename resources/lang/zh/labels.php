@@ -99,6 +99,10 @@ return [
 		'tagCreate' => '新增标签',
 		'content' => '文章内容',
 	],
+	'home' => [
+		'hot' => '热门文章',
+		'tag' => '标签'
+	],
 	'breadcrumb' => [
 		'home' => '<i class="fa fa-home"></i> 主页',
 		'permissionList' => '<i class="fa fa-bars"></i> 权限列表',
