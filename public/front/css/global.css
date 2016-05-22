@@ -1,4 +1,4 @@
-@charset "UTF-8";
+'@charset "UTF-8";
 html {
   overflow-x: hidden; }
 
@@ -99,7 +99,7 @@ a:focus {
   .blog-grid .blog-grid-title-sm > a {
     font-size: 20px; }
 .blog-grid .blog-grid-title-md {
-  font-size: 24px; }
+  font-size: 24px;}
   .blog-grid .blog-grid-title-md > a {
     font-size: 24px; }
 .blog-grid .blog-grid-title-el {

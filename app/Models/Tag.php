@@ -21,4 +21,9 @@ class Tag extends Model
 
         $this->action = config('admin.global.tag.action');
     }
+
+    public function article()
+    {
+        return $this->belongsToMany('App\Models\Article','article_tag','tag_id','article_id')->withTimestamps();
+    }
 }

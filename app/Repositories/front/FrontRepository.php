@@ -2,6 +2,8 @@
 namespace App\Repositories\front;
 use App\Models\Category;
 use App\Models\Article;
+use App\Models\ArticleTag;
+use App\Models\Tag;
 use Cache;
 use Redis;
 class FrontRepository
@@ -90,7 +92,14 @@ class FrontRepository
 	 */
 	public function showArticle($id)
 	{
-		$article = Article::with('tag')->find($id);
+		$article = '';
+		// 缓存文章
+		if (Cache::has(config('admin.global.cache.article').$id)) {
+			$article = Cache::get(config('admin.global.cache.article').$id);
+		}else{
+			$article = Article::with('tag')->find($id);
+			Cache::put(config('admin.global.cache.article').$id, $article, config('admin.global.cache.time'));
+		}
 		if ($article) {
 			// 添加访问次数
 			Redis::command('INCR',[config('admin.global.redis.article_view').$article->id]);
@@ -106,7 +115,7 @@ class FrontRepository
 	 * @param  [type]                   $category_id [description]
 	 * @return [type]                                [description]
 	 */
-	public function getArticelCategory($category_id)
+	public function getArticleCategory($category_id)
 	{
 		$categories = $this->getAllCategory();
 		return $categories ? $categories[$category_id] : '';
@@ -147,6 +156,87 @@ class FrontRepository
 	{
 		$articles = Article::where(['category_id'=>$id,'status' => config('admin.global.status.active')])->orderBy('created_at','desc')->paginate(config('admin.global.paginate'));
 		return $articles;
+	}
+	/**
+	 * 获取热门文章
+	 * @date   2016-05-22
+	 * @author 晚黎
+	 * @return [type]     [description]
+	 */
+	public function hotArticle()
+	{
+		$ids = [];
+		if (Cache::has(config('admin.global.cache.hot'))) {
+			$ids = Cache::get(config('admin.global.cache.hot'));
+		}else{
+			$ids = $this->getHotIds('article:id','article:view_*',[0,10]);
+			Cache::put(config('admin.global.cache.hot'), $ids, config('admin.global.cache.time'));
+		}
+		$articles = Article::select('id','title','created_at')->whereIn('id',$ids)->get();
+		return $articles;
+	}
+
+	/**
+	 * 获取Redis浏览量最高的id
+	 * @date   2016-05-22
+	 * @author 晚黎
+	 * @return [type]     [description]
+	 */
+	private function getHotIds($sort_name,$field,$limit = [0,10],$sort = 'DESC')
+	{
+		return Redis::sort($sort_name,['BY'=>$field,'SORT'=>$sort,'LIMIT'=> $limit]);
+	}
+	/**
+	 * 获取标签
+	 * 暂时先获取一定数量的标签，以后再自定义标签展示
+	 * @date   2016-05-22
+	 * @author 晚黎
+	 * @return [type]     [description]
+	 */
+	public function tags()
+	{
+		$tags = '';
+		if (Cache::has(config('admin.global.cache.tags'))) {
+			$tags = Cache::get(config('admin.global.cache.tags'));
+		}else{
+			$tags = Tag::take(20)->get();
+			Cache::put(config('admin.global.cache.tags'), $tags, config('admin.global.cache.time'));
+		}
+		return $tags;
+	}
+
+	/**
+	 * 获取标签下的文章
+	 * @date   2016-05-22
+	 * @author 晚黎
+	 * @param  [type]     $id [description]
+	 * @return [type]         [description]
+	 */
+	public function showArticlesByTag($id)
+	{
+		$articleIds = ArticleTag::where('tag_id',$id)->get()->toArray();
+		if ($articleIds) {
+			$articleIds = array_column($articleIds, 'article_id');
+			$articles = Article::whereIn('id',$articleIds)->where('status',config('admin.global.status.active'))->paginate(config(config('admin.global.paginate')));
+			return $articles;
+		}
+		return '';
+	}
+
+	/**
+	 * 根据标签ID获取标签
+	 * @date   2016-05-22
+	 * @author 晚黎
+	 * @param  [type]     $id [description]
+	 * @return [type]         [description]
+	 */
+	public function findTagById($id)
+	{
+		$tag = Tag::find($id);
+		if ($tag) {
+			return $tag;
+		}
+		abort(404);
 	}
 	
 }

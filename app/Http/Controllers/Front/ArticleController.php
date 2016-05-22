@@ -9,7 +9,7 @@ class ArticleController extends Controller
     public function show($id)
     {
     	$article = FrontRepository::showArticle($id);
-    	$category = FrontRepository::getArticelCategory($article->category_id);
+    	$category = FrontRepository::getArticleCategory($article->category_id);
     	return view('front.article.show')->with(compact(['article','category']));
     }
 }

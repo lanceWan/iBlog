@@ -19,7 +19,10 @@ class FrontServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             //共享分类数据
             $categories = FrontRepository::getCategories();
-            $view->with('categories',$categories);
+            $hotArticles = FrontRepository::hotArticle();
+            $tags = FrontRepository::tags();
+            $view->with(compact(['categories','hotArticles','tags']));
+
         });
 
         // 使用自定义分页模板

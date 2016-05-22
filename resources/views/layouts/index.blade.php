@@ -35,36 +35,24 @@
                             <h4 class="blog-sidebar-heading-title">{{trans('labels.home.hot')}}</h4>
                         </div>
                         <div class="blog-sidebar-content scrollbar">
-                            <!--Timeline v2 -->
                             <ul class="timeline-v2">
+                                @if($hotArticles)
+                                @foreach($hotArticles as $v)
                                 <li class="timeline-v2-list-item">
                                     <i class="timeline-v2-badge-icon radius-circle fa fa-calendar"></i>
-                                    <small class="timeline-v2-news-date">10 Aug, 2016</small>
-                                    <h5 class="timeline-v2-news-title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
+                                    <small class="timeline-v2-news-date">{{$v['created_at']}}</small>
+                                    <h5 class="timeline-v2-news-title"><a href="{{url('article/'.$v['id'])}}">{{$v['title']}}</a></h5>
                                 </li>
+                                @endforeach
+                                @else
                                 <li class="timeline-v2-list-item">
                                     <i class="timeline-v2-badge-icon radius-circle fa fa-calendar"></i>
-                                    <small class="timeline-v2-news-date">10 Aug, 2016</small>
-                                    <h5 class="timeline-v2-news-title"><a href="#">Nunc efficitur auctor felis, et tempus libero commodo non.</a></h5>
+                                    <small class="timeline-v2-news-date">iwanli</small>
+                                    <h5 class="timeline-v2-news-title">暂无热门文章</h5>
                                 </li>
-                                <li class="timeline-v2-list-item">
-                                    <i class="timeline-v2-badge-icon radius-circle fa fa-calendar"></i>
-                                    <small class="timeline-v2-news-date">10 Aug, 2016</small>
-                                    <h5 class="timeline-v2-news-title"><a href="#">Phasellus neque eros, finibus quis velit in, fringilla gravida est.</a></h5>
-                                </li>
-                                <li class="timeline-v2-list-item">
-                                    <i class="timeline-v2-badge-icon radius-circle fa fa-calendar"></i>
-                                    <small class="timeline-v2-news-date">10 Aug, 2016</small>
-                                    <h5 class="timeline-v2-news-title"><a href="#">Nunc efficitur auctor felis, et tempus libero commodo non.</a></h5>
-                                </li>
-                                <li class="timeline-v2-list-item">
-                                    <i class="timeline-v2-badge-icon radius-circle fa fa-comments-o"></i>
-                                    <small class="timeline-v2-news-date">10 Aug, 2016</small>
-                                    <h5 class="timeline-v2-news-title"><a href="#">Phasellus neque eros, finibus quis velit in, fringilla gravida est.</a></h5>
-                                </li>
+                                @endif
                                 <li class="clearfix" style="float: none;"></li>
                             </ul>
-                            <!-- End Timeline v2 -->
                         </div>
                     </div>
 
@@ -74,18 +62,15 @@
                             <h4 class="blog-sidebar-heading-title">{{trans('labels.home.tag')}}</h4>
                         </div>
                         <div class="blog-sidebar-content">
-                            <!-- Blog Grid Tags -->
                             <ul class="list-inline blog-sidebar-tags">
-                                <li><a class="radius-50" href="#">envato</a></li>
-                                <li><a class="radius-50" href="#">featured</a></li>
-                                <li><a class="radius-50" href="#">material</a></li>
-                                <li><a class="radius-50" href="#">fashion</a></li>
-                                <li><a class="radius-50" href="#">themeforest</a></li>
-                                <li><a class="radius-50" href="#">css3</a></li>
-                                <li><a class="radius-50" href="#">photoshop</a></li>
-                                <li><a class="radius-50" href="#">wordpress</a></li>
+                                @if($tags)
+                                @foreach($tags as $v)
+                                <li><a class="radius-50" href="{{url('tag/'.$v->id)}}">{{$v->name}}</a></li>
+                                @endforeach
+                                @else
+                                <li>暂无标签</li>
+                                @endif
                             </ul>
-                            <!-- End Blog Grid Tags -->
                         </div>
                     </div>
                     @show
@@ -98,7 +83,7 @@
                 <div class="col-sm-6 sm-margin-b-30">
                     <div class="footer-address">
                         <h3 class="footer-title">About Me</h3>
-                        <p class="footer-address-text">i'm PHPer</p>
+                        <p class="footer-address-text">如果你有说明疑问或者交流，下面联系方式可以找到我~.~</p>
                         <p class="footer-address-text">QQ:709344897</p>
                         <a class="footer-address-link" href="mailto:709344897@qq.com">709344897@qq.com</a>
                     </div>
