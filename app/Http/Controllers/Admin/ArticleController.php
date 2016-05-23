@@ -32,7 +32,7 @@ class ArticleController extends Controller
     	return response()->json($data);
     }
     /**
-     * 添加权限视图
+     * 添加文章视图
      * @author 晚黎
      * @date   2016-04-12T09:56:23+0800
      * @return [type]                   [description]
