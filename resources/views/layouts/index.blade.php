@@ -16,7 +16,7 @@
 <link href="{{asset('front/css/global.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{asset('front/css/purple.css')}}" rel="stylesheet" type="text/css"/>
 @yield('css')
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="{{asset('front/img/favicon.ico')}}"/>
 </head>
 <body>
 <div class="wrapper animsition">
