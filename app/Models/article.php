@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ActionAttributeTrait;
-class article extends Model
+class Article extends Model
 {
 	use ActionAttributeTrait;
 	
