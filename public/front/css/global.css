@@ -2629,7 +2629,6 @@ a:focus {
       font-size: 12px;
       font-weight: 400;
       color: #4c4c57;
-      text-transform: uppercase;
       padding: 8px 20px; }
       .header-transparent .dropdown-menu .dropdown-menu-item .dropdown-menu-item-child.active {
         color: #00bcd4; }
