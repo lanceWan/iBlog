@@ -72,8 +72,6 @@ return[
 	],
 	// 七牛图片上传路径
 	'imagePath' => 'iwanli/image/',
-	//获取七牛上文件名称（去掉URL前多少位）
-	'deleteLength' => '38',
 	// 每页显示条数
 	'paginate' => 6,
 	// 缓存
@@ -83,7 +81,7 @@ return[
 		'category' => 'category',
 		'article_cate' => 'article_cate',
 		'hot' => 'hot',
-		'time' => 120,
+		'time' => 10,
 		'article' => 'article_',
 		'tags' => 'tags',
 	],

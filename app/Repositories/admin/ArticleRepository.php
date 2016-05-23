@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Flash;
 use zgldh\QiniuStorage\QiniuStorage;
 use Redis;
+use Cache;
 /**
 * 文章仓库
 */
@@ -170,7 +171,7 @@ class ArticleRepository
 				//判断之前是否有封面,有则删掉之前的封面
 				if ($article->img) {
 					$disk = QiniuStorage::disk('qiniu');
-					$disk->delete(substr($article->img, config('admin.global.deleteLength'))); 
+					$disk->delete(substr($article->img, strpos($article->img,config('admin.global.imagePath')))); 
 				}
 				$data['img'] = $this->uploadImage($request->file('img'));
 			}
@@ -193,6 +194,8 @@ class ArticleRepository
 					$ids = array_merge($ids,$data['tag']);
 				}
 				$article->tag()->sync($ids);
+				// 清空缓存
+				Cache::forget(config('admin.global.cache.article').$article->id);
 				Flash::success(trans('alerts.articles.updated_success'));
 				return true;
 			}
