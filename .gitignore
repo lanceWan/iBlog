@@ -7,3 +7,4 @@ Homestead.json
 /public/uploads
 .tags*
 .DS_Store
+/bootstrap
