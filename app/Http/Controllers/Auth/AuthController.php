@@ -79,42 +79,13 @@ class AuthController extends Controller
      */
     protected function validateLogin(Request $request)
     {
-
-        $validator = Validator::make($request->all(), [
+        $this->validate($request,[
             'email' => 'required',
             'password' => 'required',
-            'captcha' => 'required|captcha'
-        ]);
-        /**
-         * ,[
+            'captcha' => 'required|captcha'  
+            ],[
             'captcha.captcha' => trans('validation.captcha'),
             'captcha.required' => trans('validation.captcha_required'),
-        ]
-         */
-        
-        // print_r(Captcha::img());
-
-        // var_dump(Captcha::check($request->captcha));
-        return redirect()->back()->withErrors($validator)->withInput();
-        exit();
-        dd($request->session()->all());
-        if ($validator->fails()) {
-            // dd('123');
-            // dd($validator);
-            // echo "错误";exit();
-            // dd($validator->errors()->all());
-            exit();
-        }else{
-            echo "true";
-        }
-        // dd('123');
-        // $this->validate($request,[
-        //     'email' => 'required',
-        //     'password' => 'required',
-        //     'captcha' => 'required|captcha'  
-        //     ],[
-        //     'captcha.captcha' => trans('validation.captcha'),
-        //     'captcha.required' => trans('validation.captcha_required'),
-        //     ]);
+            ]);
     }
 }
