@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function show($id)
     {
     	$articles = FrontRepository::getArticlesByCategory($id);
-    	$category = FrontRepository::getArticelCategory($id);
+    	$category = FrontRepository::getArticleCategory($id);
     	return view('front.cate.show')->with(compact(['articles','category']));
     }
 }

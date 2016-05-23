@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+<title>{{$category}} - i晚黎博客</title>
+@endsection
 @section('promo')
 <section class="breadcrumbs-v5 bg-position-fixed breadcrumbs-v5-bg-img-v4">
     <div class="container">

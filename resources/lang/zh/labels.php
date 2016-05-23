@@ -6,6 +6,8 @@ return [
 	'menuLevel' => '顶级菜单',
 	'cateLevel' => '顶级分类',
 	'logout' => '退出',
+	'hot' => '暂无热门文章',
+	'tag' => '暂无标签',
 	'user' => [
 		'id' => '序号',
 		'name' => '用户名',

@@ -1,4 +1,10 @@
 @extends('layouts.index')
+@section('title')
+<title>{{$article->title}} - i晚黎博客</title>
+@endsection
+@section('css')
+<link href="{{asset('front/plugins/highlight/styles/monokai-sublime.css')}}" rel="stylesheet" type="text/css"/>
+@endsection
 @section('promo')
 <section class="breadcrumbs-v5 bg-position-fixed breadcrumbs-v5-bg-img-v4">
     <div class="container">
@@ -89,4 +95,10 @@
     </div>
 </div>
 @parent
+@endsection
+@section('js')
+<script type="text/javascript" src="{{asset('front/plugins/highlight/highlight.pack.js')}}"></script>
+<script>
+    hljs.initHighlighting();
+</script>
 @endsection
