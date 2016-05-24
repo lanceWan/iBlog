@@ -62,15 +62,15 @@ return [
             'bucket' => 'your-bucket',
         ],
         'qiniu' => [
-            'driver'  => 'qiniu',
+            'driver'  => '',
             'domains' => [
-                'default'   => '7xsgy7.com1.z0.glb.clouddn.com/', //你的七牛域名
+                'default'   => '', //你的七牛域名
                 'https'     => '',         //你的HTTPS域名
-                'custom'    => 'cache.iwanli.me',     //你的自定义域名
+                'custom'    => '',     //你的自定义域名
              ],
-            'access_key'=> 'le5qZii2o6iez9brj-_KoFUuN0UKir15QS28NzBJ',  //AccessKey
-            'secret_key'=> 'zKrTVwyLbsNfHuClvn8hk33UT-HZVEzHiQTFn_Eu',  //SecretKey
-            'bucket'    => 'iwanli',  //Bucket名字
+            'access_key'=> '',  //AccessKey
+            'secret_key'=> '',  //SecretKey
+            'bucket'    => '',  //Bucket名字
             'notify_url'=> '',  //持久化处理回调地址
         ],
 

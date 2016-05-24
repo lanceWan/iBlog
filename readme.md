@@ -1,10 +1,31 @@
 # iBlog
 
-基于[iAdmin](https://github.com/lanceWan/IAdmin)个人博客网站，在[iAdmin](https://github.com/lanceWan/IAdmin)的基础之上增加基本的个人博客功能，本人代码完全开源，至于主题只供学习交流。如需商业应用请自行购买授权！
+基于 [iAdmin](https://github.com/lanceWan/IAdmin) 个人博客网站，在 [iAdmin](https://github.com/lanceWan/IAdmin) 的基础之上增加基本的个人博客功能，本人代码完全开源，至于主题只供学习交流。如需商业应用请自行购买授权！
 
 **预览地址**
 
 [i晚黎](http://www.iwanli.me)
+
+现阶段只是实现了最基本的博客功能，后台文本编辑器为 [https://pandao.github.io/editor.md/index.html](https://pandao.github.io/editor.md/index.html) ，上传图片直接上传到七牛并返回图片路径，七牛配置在 `config\filesystems.php`  文件中。
+
+```php
+......
+
+'qiniu' => [
+    'driver'  => 'qiniu',
+    'domains' => [
+        'default'   => '', //你的七牛域名
+        'https'     => '',         //你的HTTPS域名
+        'custom'    => '',     //你的自定义域名
+     ],
+    'access_key'=> '',  //AccessKey
+    'secret_key'=> '',  //SecretKey
+    'bucket'    => '',  //Bucket名字
+    'notify_url'=> '',  //持久化处理回调地址
+],
+......
+
+```
 
 ## 安装
 
@@ -72,4 +93,5 @@ if (strpos($this->app->version(), 'Lumen') !== false) {
 将文件中对应的代码替换掉就可以正常登录了，github上的代码已经是修复了这个Laravel5.2的bug，但是用composer下载的时候代码却没有更新，所以只好现在手动加上去了，等作者更新一个版本后估计就没有这个问题了。
 
 如有什么错误的地方，请指点，非常感谢！也可以直接联系我：709344897@qq.com 。
+
 本人博客地址：[i晚黎](http://www.iwanli.me)
