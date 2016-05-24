@@ -6,26 +6,8 @@
 
 [http://www.iwanli.me](http://www.iwanli.me)
 
-现阶段只是实现了最基本的博客功能，后台文本编辑器为 [https://pandao.github.io/editor.md/index.html](https://pandao.github.io/editor.md/index.html) ，上传图片直接上传到七牛并返回图片路径，七牛配置在 `config\filesystems.php`  文件中。
+现阶段只是实现了最基本的博客功能，后台文本编辑器为 [https://pandao.github.io/editor.md/index.html](https://pandao.github.io/editor.md/index.html) ，上传图片直接上传到七牛并返回图片路径。更多功能会在今后进行升级...
 
-```php
-......
-
-'qiniu' => [
-    'driver'  => 'qiniu',
-    'domains' => [
-        'default'   => '', //你的七牛域名
-        'https'     => '',         //你的HTTPS域名
-        'custom'    => '',     //你的自定义域名
-     ],
-    'access_key'=> '',  //AccessKey
-    'secret_key'=> '',  //SecretKey
-    'bucket'    => '',  //Bucket名字
-    'notify_url'=> '',  //持久化处理回调地址
-],
-......
-
-```
 
 ## 安装
 
@@ -69,6 +51,14 @@ MAIL_PORT=2525
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
+
+QINIU_DOMAINS_DEFAULT=null 	//你的七牛域名
+QINIU_DOMAINS_HTTPS=null	//你的HTTPS域名
+QINIU_DOMAINS_CUSTOM=null	//你的自定义域名
+QINIU_AXXESS_KEY=null		//AccessKey
+QINIU_SECRET_KEY=null		//SecretKey
+QINIU_BUCKET=null			//Bucket名字
+QINIU_NOTIFY_URL=null		//持久化处理回调地址
 
 ```
 
