@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Captcha;
-
 class AuthController extends Controller
 {
     /*
@@ -32,7 +31,7 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
-    protected $username = env('LOGIN_FIELD', 'email');
+    protected $username;
 
     /**
      * Create a new authentication controller instance.
@@ -42,6 +41,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+        $this->username = env('LOGIN_FIELD', 'email');
     }
 
     /**

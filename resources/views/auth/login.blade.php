@@ -13,8 +13,8 @@
     <h3 class="form-title">Sign In</h3>
     
     <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">{{trans('auth.email')}}</label>
-        <input class="form-control form-control-solid placeholder-no-fix" type="text" placeholder="email" name="email" value="{{old('email')}}" /> </div>
+        <label class="control-label visible-ie8 visible-ie9">{{trans('auth.'.env('LOGIN_FIELD', 'email'))}}</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="text" placeholder="{{env('LOGIN_FIELD', 'email')}}" name="{{env('LOGIN_FIELD', 'email')}}" value="{{old(env('LOGIN_FIELD', 'email'))}}" /> </div>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">{{trans('auth.password')}}</label>
         <input class="form-control form-control-solid placeholder-no-fix" type="password" placeholder="Password" name="password" /> 

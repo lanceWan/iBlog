@@ -60,6 +60,8 @@ QINIU_SECRET_KEY=null		//SecretKey
 QINIU_BUCKET=null			//Bucket名字
 QINIU_NOTIFY_URL=null		//持久化处理回调地址
 
+LOGIN_FIELD=null			//自定义用户表中的字段作为登录名，默认是 `email` ，你可以换成 `name`,想要换成其他自定义字段请在迁移数据库之前添加字段
+
 ```
 
 ## 验证码一直错误问题
