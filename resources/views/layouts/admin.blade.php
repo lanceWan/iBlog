@@ -53,27 +53,26 @@
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" class="img-circle" src="{{asset('backend/img/avatar3_small.jpg')}}" />
                                 <span class="username username-hide-on-mobile"> {{Auth::user()->name}}</span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
                                 <li>
-                                    <a href="page_user_profile_1.html">
+                                    <a href="#">
                                         <i class="icon-user"></i> My Profile </a>
                                 </li>
                                 <li>
-                                    <a href="app_calendar.html">
+                                    <a href="#">
                                         <i class="icon-calendar"></i> My Calendar </a>
                                 </li>
                                 <li>
-                                    <a href="app_inbox.html">
+                                    <a href="#">
                                         <i class="icon-envelope-open"></i> My Inbox
                                         <span class="badge badge-danger"> 3 </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="app_todo.html">
+                                    <a href="#">
                                         <i class="icon-rocket"></i> My Tasks
                                         <span class="badge badge-success"> 7 </span>
                                     </a>
