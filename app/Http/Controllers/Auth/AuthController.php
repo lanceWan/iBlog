@@ -32,6 +32,8 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $username = env('LOGIN_FIELD', 'email');
+
     /**
      * Create a new authentication controller instance.
      *
@@ -80,7 +82,7 @@ class AuthController extends Controller
     protected function validateLogin(Request $request)
     {
         $this->validate($request,[
-            'email' => 'required',
+            $this->loginUsername() => 'required',
             'password' => 'required',
             'captcha' => 'required|captcha'  
             ],[
