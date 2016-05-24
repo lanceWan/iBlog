@@ -8,4 +8,4 @@ Homestead.json
 .tags*
 .DS_Store
 bootstrap/*
-config\filesystems.php
+config/filesystems.php
