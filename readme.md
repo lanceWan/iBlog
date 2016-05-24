@@ -4,7 +4,7 @@
 
 **预览地址**
 
-[i晚黎](http://www.iwanli.me)
+[http://www.iwanli.me](http://www.iwanli.me)
 
 现阶段只是实现了最基本的博客功能，后台文本编辑器为 [https://pandao.github.io/editor.md/index.html](https://pandao.github.io/editor.md/index.html) ，上传图片直接上传到七牛并返回图片路径，七牛配置在 `config\filesystems.php`  文件中。
 
