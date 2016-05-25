@@ -165,15 +165,15 @@ class FrontRepository
 	 */
 	public function hotArticle()
 	{
-		$ids = [];
+		Cache::forget(config('admin.global.cache.hot'));
 		if (Cache::has(config('admin.global.cache.hot'))) {
-			$ids = Cache::get(config('admin.global.cache.hot'));
+			$articles = Cache::get(config('admin.global.cache.hot'));
 		}else{
-			$ids = $this->getHotIds('article:id','article:view_*',[0,10]);
-			Cache::put(config('admin.global.cache.hot'), $ids, config('admin.global.cache.time'));
+			$ids = $this->getHotIds(config('admin.global.redis.article_id'),config('admin.global.redis.article_view'),config('admin.global.redis.limit'));
+			$placeholders = implode(',',array_fill(0, count($ids), '?'));
+			$articles = Article::select('id','title','created_at')->whereIn('id',$ids)->orderByRaw("field(id,{$placeholders})", $ids)->get();
+			Cache::put(config('admin.global.cache.hot'), $articles, config('admin.global.cache.time'));
 		}
-		$placeholders = implode(',',array_fill(0, count($ids), '?'));
-		$articles = Article::select('id','title','created_at')->whereIn('id',$ids)->orderByRaw("field(id,{$placeholders})", $ids)->get();
 		return $articles;
 	}
 

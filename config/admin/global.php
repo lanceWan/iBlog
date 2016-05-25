@@ -89,5 +89,6 @@ return[
 	'redis' => [
 		'article_id' => 'article:id',
 		'article_view' => 'article:view_',
+		'limit' => [0,10],
 	],
 ];
