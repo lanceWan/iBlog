@@ -165,7 +165,6 @@ class FrontRepository
 	 */
 	public function hotArticle()
 	{
-		Cache::forget(config('admin.global.cache.hot'));
 		if (Cache::has(config('admin.global.cache.hot'))) {
 			$articles = Cache::get(config('admin.global.cache.hot'));
 		}else{
