@@ -172,7 +172,8 @@ class FrontRepository
 			$ids = $this->getHotIds('article:id','article:view_*',[0,10]);
 			Cache::put(config('admin.global.cache.hot'), $ids, config('admin.global.cache.time'));
 		}
-		$articles = Article::select('id','title','created_at')->whereIn('id',$ids)->get();
+		$placeholders = implode(',',array_fill(0, count($ids), '?'));
+		$articles = Article::select('id','title','created_at')->whereIn('id',$ids)->orderByRaw("field(id,{$placeholders})", $ids)->get();
 		return $articles;
 	}
 
