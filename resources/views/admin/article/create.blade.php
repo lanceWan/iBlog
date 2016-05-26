@@ -55,7 +55,7 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="intro">{{trans('labels.article.tag')}}</label>
+                        <label class="col-md-2 control-label" for="intro">{{trans('labels.article.category_id')}}</label>
                         <div class="col-md-8">
                           <select class="bs-select1 form-control form-filter" data-live-search="true" data-show-subtext="true" name="category_id">
                               @if($categories)
