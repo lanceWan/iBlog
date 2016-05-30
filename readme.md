@@ -92,4 +92,4 @@ if (strpos($this->app->version(), 'Lumen') !== false) {
 
 **2016-05-30**
 
-* 自定义登录配置为null是出错问题修修复(感谢 shishi<shi******0928@qq.com> 童鞋的反馈)
+* 自定义登录配置为null是出错问题修修复(感谢 `shishi<shi******0928@qq.com>` 童鞋的反馈)
