@@ -60,7 +60,7 @@ QINIU_SECRET_KEY=null		//SecretKey
 QINIU_BUCKET=null			//Bucket名字
 QINIU_NOTIFY_URL=null		//持久化处理回调地址
 
-LOGIN_FIELD=null			//自定义用户表中的字段作为登录名，默认是 `email` ，你可以换成 `name`,想要换成其他自定义字段请在迁移数据库之前添加字段
+LOGIN_FIELD=email			//自定义用户表中的字段作为登录名，默认是 `email` ，你可以换成 `name`,想要换成其他自定义字段请在迁移数据库之前添加字段
 
 ```
 
@@ -84,6 +84,12 @@ if (strpos($this->app->version(), 'Lumen') !== false) {
 
 将文件中对应的代码替换掉就可以正常登录了，github上的代码已经是修复了这个Laravel5.2的bug，但是用composer下载的时候代码却没有更新，所以只好现在手动加上去了，等作者更新一个版本后估计就没有这个问题了。
 
-如有什么错误的地方，请指点，非常感谢！也可以直接联系我：709344897@qq.com 。
+如有什么错误的地方，请指点，非常感谢！也可以直接联系我：709344897@qq.com 。(发现邮箱反馈的时候腾讯会移动到垃圾邮箱，如果我没看到加我这个QQ联系也可以，我在想一下怎么反馈最好)
 
 本人博客地址：[i晚黎](http://www.iwanli.me)
+
+## Change Log
+
+**2016-05-30**
+
+* 自定义登录配置为null是出错问题修修复(感谢 shishi<shi******0928@qq.com> 童鞋的反馈)
