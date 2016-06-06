@@ -92,8 +92,13 @@ a:focus {
   box-shadow: 0 2px 5px 3px #eff1f8; }
 .blog-grid .blog-grid-content {
   padding: 20px; }
+.blog-grid .blog-grid-content p img{
+  width: 100%;
+}
   .blog-grid .blog-grid-content.blog-grid-content-no-gutter {
     padding: 20px 0; }
+}
+}
 .blog-grid .blog-grid-title-sm {
   font-size: 20px; }
   .blog-grid .blog-grid-title-sm > a {
