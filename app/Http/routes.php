@@ -28,10 +28,10 @@
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'HomeController@index');
+    Route::get('/test', 'HomeController@test');
     Route::auth();
 });
 Route::group(['namespace' => 'Front','middleware' => ['web']], function ($router) {
-    $router->get('/', 'HomeController@index');
     $router->get('article/{id}','ArticleController@show')->where(['id' => '\d+']);
     $router->get('cate/{id}','CategoryController@show')->where(['id' => '\d+']);
     $router->get('tag/{id}','TagController@show')->where(['id' => '\d+']);

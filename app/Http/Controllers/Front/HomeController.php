@@ -31,4 +31,10 @@ class HomeController extends Controller
     	$cate = FrontRepository::getAllCategory();
     	return view('front.home.index')->with(compact(['articles','cate']));
     }
+
+    public function test()
+    {
+        $ids =  Redis::sort(config('admin.global.redis.article_id'),['BY'=> config('admin.global.redis.article_view'),'SORT'=>'DESC','LIMIT'=> [0,10]]);
+        dd($ids);
+    }
 }
