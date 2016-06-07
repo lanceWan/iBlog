@@ -168,7 +168,7 @@ class FrontRepository
 		if (Cache::has(config('admin.global.cache.hot'))) {
 			$articles = Cache::get(config('admin.global.cache.hot'));
 		}else{
-			$ids = $this->getHotIds(config('admin.global.redis.article_id'),config('admin.global.redis.article_view'),config('admin.global.redis.limit'));
+			$ids = $this->getHotIds(config('admin.global.redis.article_id'),config('admin.global.redis.article_view').'*',config('admin.global.redis.limit'));
 			if (empty($ids)) {
 				return '';
 			}

@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        $ids =  Redis::sort(config('admin.global.redis.article_id'),['BY'=> config('admin.global.redis.article_view'),'SORT'=>'DESC','LIMIT'=> [0,10]]);
+        $ids =  Redis::sort(config('admin.global.redis.article_id'),['BY'=> config('admin.global.redis.article_view').'*','SORT'=>'DESC','LIMIT'=> [0,10]]);
         dd($ids);
     }
 }
