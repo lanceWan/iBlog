@@ -32,7 +32,6 @@ Route::group(['middleware' => ['web']], function () {
 });
 Route::group(['namespace' => 'Front','middleware' => ['web']], function ($router) {
     Route::get('/', 'HomeController@index');
-    Route::get('test', 'HomeController@test');
     $router->get('article/{id}','ArticleController@show')->where(['id' => '\d+']);
     $router->get('cate/{id}','CategoryController@show')->where(['id' => '\d+']);
     $router->get('tag/{id}','TagController@show')->where(['id' => '\d+']);
