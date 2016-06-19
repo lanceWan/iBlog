@@ -41,27 +41,18 @@
     <!-- Blog Comment -->
     <div class="bg-color-white margin-b-30">
         <div class="blog-single-post-content">
-            <!-- Heading v1 -->
             <div class="heading-v1 text-center margin-b-50">
                 <h2 class="heading-v1-title">Leave a comment</h2>
             </div>
-            <!-- End Heading v1 -->
-
-            <!-- Single Post Comment Form -->
-            <div class="blog-single-post-comment-form">
-                <div class="ds-thread" data-thread-key="{{$article->id}}" data-title="{{$article->title}}" data-url="{{url('article/'.$article->id)}}"></div>
+            <div id="SOHUCS" sid="{{$article->id}}"></div>
+            <div id="cyQing" role="cylabs" data-use="qing"></div>
+            <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
             <script type="text/javascript">
-            var duoshuoQuery = {short_name:"ibanya"};
-                (function() {
-                    var ds = document.createElement('script');
-                    ds.type = 'text/javascript';ds.async = true;
-                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                    ds.charset = 'UTF-8';
-                    (document.getElementsByTagName('head')[0] 
-                     || document.getElementsByTagName('body')[0]).appendChild(ds);
-                })();
-                </script>
-            </div>
+                window.changyan.api.config({
+                    appid: 'cysrvzsyE',
+                    conf: 'prod_a9df7d1b5b525a68d10068653d799ef6'
+                });
+            </script>   
         </div>
     </div>
 </article>
