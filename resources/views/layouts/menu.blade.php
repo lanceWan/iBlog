@@ -63,6 +63,11 @@
                         @endif
                         @endforeach
                         @endif
+                        <li class="nav-item">
+                            <a class="nav-item-child radius-3" href="{{url('article/25'}}">
+                                Laravel 视频教程
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
