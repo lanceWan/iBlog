@@ -122,5 +122,14 @@
 <script type="text/javascript" src="{{asset('front/plugins/jquery.wow.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/app.js')}}"></script>
 @yield('js')
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8ffac5b2edb9acc821670955fe4f53cc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>
