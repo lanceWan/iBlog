@@ -76,6 +76,18 @@
                             </ul>
                         </div>
                     </div>
+
+                    <div class="blog-sidebar">
+                        <div class="blog-sidebar-heading">
+                            <i class="blog-sidebar-heading-icon fa fa-paperclip"></i>
+                            <h4 class="blog-sidebar-heading-title">友情链接</h4>
+                        </div>
+                        <div class="blog-sidebar-content">
+                            <ul class="list-unstyled lists-base">
+                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="https://phphub.org/">PHPHub(推荐)</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     @show
                 </div>
             </div>
