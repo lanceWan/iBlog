@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                    <div class="blog-sidebar">
+                    <div class="blog-sidebar margin-b-30">
                         <div class="blog-sidebar-heading">
                             <i class="blog-sidebar-heading-icon fa fa-paperclip"></i>
                             <h4 class="blog-sidebar-heading-title">{{trans('labels.home.tag')}}</h4>
