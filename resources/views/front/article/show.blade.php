@@ -49,8 +49,8 @@
             <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
             <script type="text/javascript">
                 window.changyan.api.config({
-                    appid: 'cysrvzsyE',
-                    conf: 'prod_a9df7d1b5b525a68d10068653d799ef6'
+                    appid: '{{env('C_APPID')}}',
+                    conf: '{{env('prod_a9df7d1b5b525a68d10068653d799ef6')}}'
                 });
             </script>   
         </div>
