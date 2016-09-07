@@ -85,6 +85,7 @@
                         <div class="blog-sidebar-content">
                             <ul class="list-unstyled lists-base">
                                 <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="https://phphub.org/">PHPHub(推荐)</a></li>
+                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="http://laravelacademy.org/">Laravel学院(推荐)</a></li>
                             </ul>
                         </div>
                     </div>
