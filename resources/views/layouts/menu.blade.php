@@ -65,7 +65,7 @@
                         @endif
                         <li class="nav-item">
                             <a class="nav-item-child radius-3" href="{{url('article/25')}}">
-                                Laravel 视频教程
+                                Laravel5.2系列专题
                             </a>
                         </li>
                         <li class="nav-item">
