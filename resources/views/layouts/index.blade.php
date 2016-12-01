@@ -34,6 +34,18 @@
                     @section('rightSide')
                     <div class="blog-sidebar margin-b-30">
                         <div class="blog-sidebar-heading">
+                            <i class="blog-sidebar-heading-icon fa fa-paperclip"></i>
+                            <h4 class="blog-sidebar-heading-title">视频专题</h4>
+                        </div>
+                        <div class="blog-sidebar-content">
+                            <ul class="list-unstyled lists-base">
+                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="url('article/25')">Laravel5.2 Entrust视频</a></li>
+                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="url('article/65')">Laravel5.3&Vue2.0系列</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-sidebar margin-b-30">
+                        <div class="blog-sidebar-heading">
                             <i class="blog-sidebar-heading-icon fa fa-fire"></i>
                             <h4 class="blog-sidebar-heading-title">{{trans('labels.home.hot')}}</h4>
                         </div>

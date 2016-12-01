@@ -68,6 +68,11 @@
                                 Laravel 视频教程
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-item-child radius-3" href="{{url('article/65')}}">
+                                Laravel5.3&Vue2.0系列
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
