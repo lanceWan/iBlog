@@ -39,8 +39,8 @@
                         </div>
                         <div class="blog-sidebar-content">
                             <ul class="list-unstyled lists-base">
-                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="url('article/25')">Laravel5.2系列专题</a></li>
-                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="url('article/65')">Laravel5.3&Vue2.0系列</a></li>
+                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="{{url('article/25')}}">Laravel5.2系列专题</a></li>
+                                <li><i class="lists-item-element fa fa-angle-right"></i> <a target="_black" href="{{url('article/65')}}">Laravel5.3&Vue2.0系列</a></li>
                             </ul>
                         </div>
                     </div>
